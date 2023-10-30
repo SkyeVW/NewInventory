@@ -38,7 +38,7 @@ public class ExpiringItems { // subsets of WarehouseStock with certain dates
     private WarehouseStock expiryYear;
 
     @NotEmpty
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="lotNumber")
     private WarehouseStock lotNumber;
 

@@ -13,8 +13,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "Restock")
-public class Restock { // requests from clients
+@Table(name = "Shipping")
+public class Shipping { // outgoing from warehouse
 
     @Id
     @NotNull
@@ -26,13 +26,20 @@ public class Restock { // requests from clients
     private WarehouseStock itemId;
 
     @NotEmpty
+    private int restock;
+
+    @NotEmpty
     private int quantity;
 
+    @NotEmpty
+    private int storeId;
 
-    public Restock(int restockRequestId, WarehouseStock itemId, int quantity){
+    public Shipping(int restockRequestId, WarehouseStock itemId, int restock, int quantity, int storeId){
         this.restockRequestId = restockRequestId;
         this.itemId = itemId;
+        this.restock = restock;
         this.quantity = quantity;
+        this.storeId = storeId;
     }
 
 }
