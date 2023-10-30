@@ -18,7 +18,12 @@ public class Shipping { // outgoing from warehouse
 
     @Id
     @NotNull
-    private int restockRequestId;
+    private int shipmentId;
+
+    @NotEmpty
+    @OneToMany //one restock can have many itemId
+    @JoinColumn(name="storeId")
+    private Restock storeId;
 
     @NotEmpty
     @OneToMany //one restock can have many itemId
@@ -26,20 +31,13 @@ public class Shipping { // outgoing from warehouse
     private WarehouseStock itemId;
 
     @NotEmpty
-    private int restock;
+    private int shippingQuantity;
 
-    @NotEmpty
-    private int quantity;
 
-    @NotEmpty
-    private int storeId;
-
-    public Shipping(int restockRequestId, WarehouseStock itemId, int restock, int quantity, int storeId){
-        this.restockRequestId = restockRequestId;
-        this.itemId = itemId;
-        this.restock = restock;
-        this.quantity = quantity;
+    public Shipping(int shipmentId, Restock storeId, WarehouseStock itemId, int shippingQuantity){
+        this.shipmentId = shipmentId;
         this.storeId = storeId;
+        this.itemId = itemId;
+        this.shippingQuantity = shippingQuantity;
     }
-
 }

@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 @Setter
 @Table(name = "Restock")
 public class Restock { // requests from clients
-
     @Id
     @NotNull
     private int restockRequestId;
@@ -28,11 +27,14 @@ public class Restock { // requests from clients
     @NotEmpty
     private int quantity;
 
+    @NotEmpty
+    private int storeId;
 
-    public Restock(int restockRequestId, WarehouseStock itemId, int quantity){
+    public Restock(int restockRequestId, WarehouseStock itemId, int quantity, int storeId){
         this.restockRequestId = restockRequestId;
         this.itemId = itemId;
         this.quantity = quantity;
+        this.storeId = storeId;
     }
 
 }
