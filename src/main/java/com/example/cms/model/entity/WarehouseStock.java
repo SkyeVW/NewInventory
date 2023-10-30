@@ -26,6 +26,9 @@ public class WarehouseStock {
     private int currentQuantity;
 
     @NotEmpty
+    private String itemName;
+
+    @NotEmpty
     private int lotNumber;
 
     @NotEmpty
@@ -37,13 +40,14 @@ public class WarehouseStock {
     @NotEmpty
     private int expiryYear;
 
-    public WarehouseStock(int itemId, int currentQuantity, int lotNumber, int expiryMonth, int expiryDay, int expiryYear){
+    public WarehouseStock(int itemId, int currentQuantity, int lotNumber, int expiryMonth, int expiryDay, int expiryYear, String itemName){
         this.itemId = itemId;
         this.currentQuantity = currentQuantity;
         this.lotNumber = lotNumber;
         this.expiryMonth = expiryMonth;
         this.expiryDay = expiryDay;
         this.expiryYear = expiryYear;
+        this.itemName = itemName;
     }
 
 }
