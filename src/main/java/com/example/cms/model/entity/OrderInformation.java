@@ -44,7 +44,10 @@ public class OrderInformation {
     @NotEmpty
     private int orderQuantity;
 
-    public OrderInformation(int orderId, Supplier supplierName, Supplier supplierId, long orderDate, long expectedArrivalDate, Supplier itemId, int orderQuantity){
+    @NotEmpty
+    private boolean orderConfirmation;
+
+    public OrderInformation(int orderId, Supplier supplierName, Supplier supplierId, long orderDate, long expectedArrivalDate, Supplier itemId, int orderQuantity, boolean orderConfirmation){
         this.orderId = orderId;
         this.supplierName = supplierName;
         this.supplierId = supplierId;
@@ -52,6 +55,7 @@ public class OrderInformation {
         this.expectedArrivalDate = expectedArrivalDate;
         this.itemId = itemId;
         this.orderQuantity = orderQuantity;
+        this.orderConfirmation = orderConfirmation;
     }
 
 }
