@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-public class ProfessorController {
+public class ProfessorController { //
     @Autowired
     private final ProfessorRepository repository;
 
