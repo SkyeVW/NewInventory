@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
 @NoArgsConstructor
@@ -15,7 +17,7 @@ import javax.validation.constraints.NotEmpty;
 public class Supplier {
 
     @Id
-    @NotEmpty
+    @NotNull
     private int supplierId;
 
     @NotEmpty

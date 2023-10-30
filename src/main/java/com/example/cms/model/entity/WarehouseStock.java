@@ -7,6 +7,7 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
 public class WarehouseStock {
 
     @Id
-    @NotEmpty
+    @NotNull
     private int itemId;
 
     @NotEmpty
