@@ -20,25 +20,28 @@ public class OrderInformation {
     @NotNull
     private int orderId;
 
+    @NotEmpty
     @ManyToOne // many orderId to one supplier
     @JoinColumn(name="supplierName")
     private Supplier supplierName;
 
+    @NotEmpty
     @ManyToOne
     @JoinColumn(name="supplerId")
     private Supplier supplierId;
 
-    @NotNull
+    @NotEmpty
     private long orderDate;
 
-    @NotNull
+    @NotEmpty
     private long expectedArrivalDate;
 
+    @NotEmpty
     @OneToOne
     @JoinColumn(name="itemId")
     private Supplier itemId;
 
-    @NotNull
+    @NotEmpty
     private int orderQuantity;
 
     public OrderInformation(int orderId, Supplier supplierName, Supplier supplierId, long orderDate, long expectedArrivalDate, Supplier itemId, int orderQuantity){

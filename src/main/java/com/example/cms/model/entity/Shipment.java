@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
@@ -19,31 +20,31 @@ public class Shipment {
     @NotNull
     private int shipmentId;
 
-    @NotNull
+    @NotEmpty
     private int shipmentMonth;
 
-    @NotNull
+    @NotEmpty
     private int shipmentDay;
 
-    @NotNull
+    @NotEmpty
     private int shipmentYear;
 
-    @NotNull
+    @NotEmpty
     private int shipmentSize;
 
-    @NotNull
+    @NotEmpty
     private int newLotNumber; // just for displaying
 
-    @NotNull
+    @NotEmpty
     private int newItemId;  // just for displaying
 
-    @NotNull
+    @NotEmpty
     private int newExpiryMonth;  // just for displaying
 
-    @NotNull
+    @NotEmpty
     private int newExpiryDay;  // just for displaying
 
-    @NotNull
+    @NotEmpty
     private int newExpiryYear;  // just for displaying
 
     public Shipment(int shipmentId, int shipmentMonth, int shipmentDay, int shipmentYear, int shipmentSize, int newLotNumber, int newItemId, int newExpiryMonth, int newExpiryDay, int newExpiryYear){

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
@@ -16,26 +17,27 @@ import javax.validation.constraints.NotNull;
 public class ExpiringItems { // subsets of WarehouseStock with certain dates
 
     @Id
+    @NotNull
     @OneToOne
     @JoinColumn(name="itemId")
     private WarehouseStock itemId;
 
-    @NotNull
+    @NotEmpty
     @OneToOne
     @JoinColumn(name="expiryMonth")
     private WarehouseStock expiryMonth;
 
-    @NotNull
+    @NotEmpty
     @OneToOne
     @JoinColumn(name="expiryDay")
     private WarehouseStock expiryDay;
 
-    @NotNull
+    @NotEmpty
     @OneToOne
     @JoinColumn(name="expiryYear")
     private WarehouseStock expiryYear;
 
-    @NotNull
+    @NotEmpty
     @OneToOne
     @JoinColumn(name="lotNumber")
     private WarehouseStock lotNumber;

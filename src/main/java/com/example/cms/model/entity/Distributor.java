@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
@@ -16,14 +17,15 @@ import javax.validation.constraints.NotNull;
 public class Distributor { // companies that ship the supplies to us
 
     @Id
+    @NotNull
     @OneToOne
     @JoinColumn(name="shipmentId")
     private Shipment shipmentId;
 
-    @NotNull
+    @NotEmpty
     private boolean shipmentStatus;
 
-    @NotNull
+    @NotEmpty
     private String cancellation; // cancellation reason
 
     public Distributor(Shipment shipmentId, boolean shipmentStatus, String cancellation){

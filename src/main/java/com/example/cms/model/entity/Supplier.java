@@ -23,6 +23,7 @@ public class Supplier {
     @NotEmpty
     private String supplierName;
 
+    @NotEmpty
     @OneToMany
     @JoinColumn(name="itemId")
     private WarehouseStock itemId;
