@@ -3,11 +3,12 @@ package com.example.cms.model.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.bytebuddy.implementation.bind.annotation.Empty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
+import org.springframework.lang.Nullable;
 
 @Entity
 @NoArgsConstructor
@@ -47,7 +48,12 @@ public class Shipment {
     @NotEmpty
     private int newExpiryYear;  // just for displaying
 
-    public Shipment(int shipmentId, int shipmentMonth, int shipmentDay, int shipmentYear, int shipmentSize, int newLotNumber, int newItemId, int newExpiryMonth, int newExpiryDay, int newExpiryYear){
+    @NotEmpty
+    private boolean shipmentStatus;
+
+    @Nullable
+    private String cancellationReason;
+    public Shipment(int shipmentId, int shipmentMonth, int shipmentDay, int shipmentYear, int shipmentSize, int newLotNumber, int newItemId, int newExpiryMonth, int newExpiryDay, int newExpiryYear, boolean shipmentStatus, String cancellationReason){
         this.shipmentId = shipmentId;
         this.shipmentMonth = shipmentMonth;
         this.shipmentDay = shipmentDay;
@@ -58,6 +64,8 @@ public class Shipment {
         this.newExpiryMonth = newExpiryMonth;
         this.newExpiryDay = newExpiryDay;
         this.newExpiryYear = newExpiryYear;
+        this.shipmentStatus = shipmentStatus;
+        this.cancellationReason = cancellationReason;
     }
 
 }
