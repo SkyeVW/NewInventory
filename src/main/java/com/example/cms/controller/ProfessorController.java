@@ -14,6 +14,7 @@ public class ProfessorController {
     @Autowired
     private final ProfessorRepository repository;
 
+    // test
     public ProfessorController(ProfessorRepository repository) {
         this.repository = repository;
     }
