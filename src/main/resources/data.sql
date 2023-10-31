@@ -10,10 +10,10 @@ INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, exp
 INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(10, 'Farm Yao', 1);
 INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(11, 'Sophia Roman Empire', 4);
 INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(12, 'LQ Pink', 3);
-INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(13, 'Sasha Mangos', 5);
+INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(13, 'Sasha Mangoes', 5);
 
 INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
-    VALUES (5000, 'Sasha Mangos', 13, 01022023, 01102023, 5, 200, TRUE);
+    VALUES (5000, 'Sasha Mangoes', 13, 01022023, 01102023, 5, 200, TRUE);
 INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
     VALUES (5001, 'Farm Yao', 10, 11022023, 01102024, 1, 70, FALSE);
 INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
