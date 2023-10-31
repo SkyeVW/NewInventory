@@ -33,11 +33,14 @@ public class Shipping { // outgoing from warehouse
     @NotEmpty
     private int shippingQuantity;
 
+    @NotEmpty
+    private boolean shipmentStatus;
 
-    public Shipping(int shipmentId, Restock storeId, WarehouseStock itemId, int shippingQuantity){
+    public Shipping(int shipmentId, Restock storeId, WarehouseStock itemId, int shippingQuantity, boolean shipmentStatus){
         this.shipmentId = shipmentId;
         this.storeId = storeId;
         this.itemId = itemId;
         this.shippingQuantity = shippingQuantity;
+        this.shipmentStatus = shipmentStatus;
     }
 }

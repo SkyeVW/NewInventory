@@ -1,3 +1,39 @@
+INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, expiryDay, expiryYear, itemName)
+    VALUES(1, 30, 3000, 08, 11, 2024, 'Tomatoes');
+INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, expiryDay, expiryYear, itemName)
+    VALUES(3, 5, 3001, 03, 31, 2027, 'Frozen Dumplings');
+INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, expiryDay, expiryYear, itemName)
+    VALUES(4, 150, 3002, 03, 12, 2024, 'Butter');
+INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, expiryDay, expiryYear, itemName)
+    VALUES(5, 90, 3003, 09, 21, 2026, 'Oil');
+
+INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(10, 'Farm Yao', 1);
+INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(11, 'Sophia Roman Empire', 4);
+INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(12, 'LQ Pink', 3);
+INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(13, 'Sasha Mangos', 5);
+
+INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
+    VALUES (5000, 'Sasha Mangos', 13, 01022023, 01102023, 5, 200, TRUE);
+INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
+    VALUES (5001, 'Farm Yao', 10, 11022023, 01102024, 1, 70, FALSE);
+INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
+   VALUES (5002, 'LQ Pink', 12, 06272023, 07272023, 3, 150, TRUE);
+
+INSERT INTO Shipment (shipmentId, shipmentMonth, shipmentDay, shipmentYear, shipmentSize, newLotNumber, newItemId,
+    newExpiryMonth, newExpiryDay, newExpiryYear, shipmentStatus, cancellationReason) VALUES (1037, 06, 18, 2024, 100, 4037, 1, 06, 18, 2027, TRUE);
+INSERT INTO Shipment (shipmentId, shipmentMonth, shipmentDay, shipmentYear, shipmentSize, newLotNumber, newItemId,
+    newExpiryMonth, newExpiryDay, newExpiryYear, shipmentStatus, cancellationReason) VALUES (1038, 04, 13, 2024, 65, 4038, 2, 04, 13, 2027, FALSE, 'not enough storage due to lack of sales');
+
+INSERT INTO ExpiringItems (itemId, expiryMonth, expiryDay, expiryYear, lotNumber) VALUES (1, 08, 11, 2024, 3000);
+INSERT INTO ExpiringItems (itemId, expiryMonth, expiryDay, expiryYear, lotNumber) VALUES (3, 03, 31, 2027, 3001);
+INSERT INTO ExpiringItems (itemId, expiryMonth, expiryDay, expiryYear, lotNumber) VALUES (4, 03, 12, 2024, 3002);
+INSERT INTO ExpiringItems (itemId, expiryMonth, expiryDay, expiryYear, lotNumber) VALUES (5, 09, 21, 2026, 3003);
+
+INSERT INTO Restock (restockRequestId, itemId, quantity, storeId) VALUES (6000, 4, 20, 7000);
+INSERT INTO Restock (restockRequestId, itemId, quantity, storeId) VALUES (6001, 1, 15, 7001);
+
+INSERT INTO Shipping (shipmentId, storeId, itemId, shippingQuantity, shipmentStatus) VALUES (8000, 7000, 4, 20, TRUE);
+INSERT INTO Shipping (shipmentId, storeId, itemId, shippingQuantity, shipmentStatus) VALUES (8001, 7001, 1, 15, FALSE);
 
 INSERT INTO departments (code, name, contactEmail) VALUES ('MIE', 'Mechanical and Industrial Engineering', 'reception@mie.utoronto.ca');
 INSERT INTO departments (code, name, contactEmail) VALUES ('ECE', 'Electrical and Computer Engineering', 'eceinquiry@utoronto.ca');

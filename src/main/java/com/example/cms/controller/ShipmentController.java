@@ -2,7 +2,9 @@ package com.example.cms.controller;
 
 import com.example.cms.controller.exceptions.ProfessorNotFoundException;
 import com.example.cms.model.entity.Professor;
+import com.example.cms.model.entity.Shipment;
 import com.example.cms.model.repository.ProfessorRepository;
+import com.example.cms.model.repository.ShipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,15 +14,15 @@ import java.util.List;
 @RestController
 public class ShipmentController { //
     @Autowired
-    private final ProfessorRepository repository;
+    private final ShipmentRepository repository;
 
     // test
-    public ShipmentController(ProfessorRepository repository) {
+    public ShipmentController(ShipmentRepository repository) {
         this.repository = repository;
     }
 
-    @GetMapping("/professors")
-    List<Professor> retrieveAllProfessors() {
+    @GetMapping("/Shipment/{shipmentId}")
+    List<Shipment> retrieveAllShipment() {
         return repository.findAll();
     }
 
