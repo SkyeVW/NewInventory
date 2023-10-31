@@ -1,8 +1,10 @@
 package com.example.cms.controller;
 
-import com.example.cms.controller.exceptions.ProfessorNotFoundException;
+import com.example.cms.controller.exceptions.ShipmentNotFoundException;
 import com.example.cms.model.entity.Professor;
+import com.example.cms.model.entity.Shipment;
 import com.example.cms.model.repository.ProfessorRepository;
+import com.example.cms.model.repository.ShipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,49 +14,36 @@ import java.util.List;
 @RestController
 public class ShipmentController { //
     @Autowired
-    private final ProfessorRepository repository;
+    private final ShipmentRepository repository;
 
-    // test
-    public ShipmentController(ProfessorRepository repository) {
+    public ShipmentController(ShipmentRepository repository) {
         this.repository = repository;
     }
 
-    @GetMapping("/professors")
-    List<Professor> retrieveAllProfessors() {
+    // get shipmentId
+    @GetMapping("/Shipment/{shipmentId}")
+    List<Shipment> retrieveAllShipment() {
         return repository.findAll();
     }
 
-    @PostMapping("/professors")
-    Professor createProfessor(@RequestBody Professor newProfessor) {
-        newProfessor.setSalary(Math.max(newProfessor.getSalary(), 30000));
-        return repository.save(newProfessor);
+    // get month this shipment is being shipped
+    @GetMapping("/Shipment/dateShipment/{shipmentId}")
+    Shipment retrieveDateShipment(@PathVariable("shipmentId") int shipmentId) {
+        return repository.findById(Long.valueOf(shipmentId)) // NOT SURE if can do long.valueOf
+                .orElseThrow(() -> new ShipmentNotFoundException(shipmentId));
     }
 
-    @GetMapping("/professors/{id}")
-    Professor retrieveProfessor(@PathVariable("id") Long professorId) {
-        return repository.findById(professorId)
-                .orElseThrow(() -> new ProfessorNotFoundException(professorId));
+    // get size of shipment
+    @GetMapping("/Shipment/size/{shipmentId}")
+    Shipment retrieveSize(@PathVariable("shipmentId") int shipmentId) {
+        return repository.findById(Long.valueOf(shipmentId)) // NOT SURE if can do long.valueOf
+                .orElseThrow(() -> new ShipmentNotFoundException(shipmentId));
     }
 
-    @PutMapping("/professors/{id}")
-    Professor updateProfessor(@RequestBody Professor newProfessor, @PathVariable("id") Long professorId) {
-
-        return repository.findById(professorId)
-                .map(professor -> {
-                    professor.setFirstName(newProfessor.getFirstName());
-                    professor.setLastName(newProfessor.getLastName());
-                    professor.setSalary(Math.max(newProfessor.getSalary(), 30000));
-                    return repository.save(professor);
-                })
-                .orElseGet(() -> {
-                    newProfessor.setId(professorId);
-                    newProfessor.setSalary(Math.max(newProfessor.getSalary(), 30000));
-                    return repository.save(newProfessor);
-                });
-    }
-
-    @DeleteMapping("/professors/{id}")
-    void deleteProfessor(@PathVariable("id") Long professorId) {
-        repository.deleteById(professorId);
+    // get new lot number for the new products that are shipping
+    @GetMapping("/Shipment/newLotNum/{shipmentId}")
+    Shipment retrieveNewLotNum(@PathVariable("shipmentId") int shipmentId) {
+        return repository.findById(Long.valueOf(shipmentId)) // NOT SURE if can do long.valueOf
+                .orElseThrow(() -> new ShipmentNotFoundException(shipmentId));
     }
 }
