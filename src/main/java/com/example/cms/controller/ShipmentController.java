@@ -46,4 +46,38 @@ public class ShipmentController { //
         return repository.findById(Long.valueOf(shipmentId)) // NOT SURE if can do long.valueOf
                 .orElseThrow(() -> new ShipmentNotFoundException(shipmentId));
     }
+
+    // get new itemId (in a list) for new products that are shipping
+    @GetMapping("/Shipment/newItemId/{shipmentId}")
+    List<Shipment> retrieveAllNewItemId(@PathVariable("shipmentId") int shipmentId) {
+        repository.findAllNewItemId(shipmentId);
+        return repository.findAll();
+    }
+
+    // get new expiry dates for each new products
+    @GetMapping("/Shipment/newExpiryDate/{shipmentId}")
+    Shipment retriveNewExpiryDate(@PathVariable("shipmentId") int shipmentId) {
+        return repository.findById(Long.valueOf(shipmentId)) // NOT SURE if can do long.valueOf
+                .orElseThrow(() -> new ShipmentNotFoundException(shipmentId));
+    }
+
+    // get status of shipment (true = shipped, else false)
+    @GetMapping("/Shipment/status/{shipmentId}")
+    Shipment retrieveStatus(@PathVariable("shipmentId") int shipmentId) {
+        return repository.findById(Long.valueOf(shipmentId)) // NOT SURE if can do long.valueOf
+                .orElseThrow(() -> new ShipmentNotFoundException(shipmentId));
+    }
+
+    // get the reason why shipment is cancelled
+    @GetMapping("/Shipment/reasonCancellation/{shipmentId}")
+    Shipment retrieveReason(@PathVariable("shipmentId") int shipmentId) {
+        return repository.findById(Long.valueOf(shipmentId)) // NOT SURE if can do long.valueOf
+                .orElseThrow(() -> new ShipmentNotFoundException(shipmentId));
+    }
+
+    // update shipmentStatus according to user input
+    @PutMapping("/Shipment/status/{shipmentId}/{updatedStatus}")
+    Shipment updateStatus(@PathVariable("shipmentId") int shipmentId, @PathVariable("updatedStatus") boolean updatedStatus) {
+
+    }
 }

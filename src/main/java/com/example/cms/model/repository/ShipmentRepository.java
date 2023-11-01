@@ -30,4 +30,23 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Long> {
             "shipmentId = :shipmentId", nativeQuery = true)
     Shipment retrieveNewLotNum(@Param("shipmentId") long shipmentId);
 
+    // get ALL new itemId for the new products that are shipping
+    @Query(value = "select newItemId from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    List<Shipment> findAllNewItemId(@Param("shipmentId") int shipmentId);
+
+    // get new expiry date for new products
+    @Query(value = "select newExpiryMonth, newExpiryDay, newExpiryYear from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retriveNewExpiryDate(@Param("shipmentId") long shipmentId);
+
+    // get status of new products that are shipping
+    @Query(value = "select shipmentStatus from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retrieveStatus(@Param("shipmentId") long shipmentId);
+
+    // get reason for cancellation
+    @Query(value = "select cancellationReason from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retrieveReason(@Param("shipmentId") long shipmentId);
 }
