@@ -54,8 +54,8 @@ public class ShipmentController { //
 
     // get new expiry dates for each new products
     @GetMapping("/Shipment/newExpiryDate/{shipmentId}")
-    Shipment retriveNewExpiryDate(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retriveNewExpiryDate(shipmentId); // NOT SURE if can do long.valueOf
+    Shipment retrieveNewExpiryDate(@PathVariable("shipmentId") int shipmentId) {
+        return repository.retrieveNewExpiryDate(shipmentId); // NOT SURE if can do long.valueOf
     }
 
     // get status of shipment (true = shipped, else false)

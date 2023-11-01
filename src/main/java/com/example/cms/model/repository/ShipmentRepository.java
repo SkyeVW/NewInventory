@@ -38,7 +38,7 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Long> {
     // get new expiry date for new products
     @Query(value = "select newExpiryMonth, newExpiryDay, newExpiryYear from Shipment s where " +
             "shipmentId = :shipmentId", nativeQuery = true)
-    Shipment retriveNewExpiryDate(@Param("shipmentId") long shipmentId);
+    Shipment retrieveNewExpiryDate(@Param("shipmentId") long shipmentId);
 
     // get status of new products that are shipping
     @Query(value = "select shipmentStatus from Shipment s where " +
