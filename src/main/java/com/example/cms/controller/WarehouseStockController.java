@@ -22,10 +22,17 @@ public class WarehouseStockController { //
         this.repository = repository;
     }
 
-    // get items that are currently in stock
-    @GetMapping("/WarehouseStock/{itemId}")
+    // get ALL items that are currently in stock
+    @GetMapping("/WarehouseStock")
     List<WarehouseStock> retrieveAllItemsId() {
         return repository.findAll();
+    }
+
+    // get every info for items that are currently in stock
+    @GetMapping("/WarehouseStock/{itemId}")
+    WarehouseStock retrieveAllInfo(@PathVariable("itemId") int itemId) {
+        return repository.findById(Long.valueOf(itemId))
+                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
     }
 
     // get item names

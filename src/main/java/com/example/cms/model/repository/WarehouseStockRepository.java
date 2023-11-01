@@ -14,6 +14,10 @@ import java.util.List;
 @Repository
 public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, Long> {
 
+    // get all info of item
+    @Query(value = "select * from WarehouseStock s where itemId = :itemId", nativeQuery = true)
+    WarehouseStock retrieveAllInfo(@Param("itemId") String itemId);
+
     // get item name in warehouse
     @Query(value = "select itemName from WarehouseStock s where itemId = :itemId", nativeQuery = true)
     WarehouseStock retrieveAllItemsName(@Param("itemId") String itemId);
