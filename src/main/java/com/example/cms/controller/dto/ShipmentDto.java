@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ShipmentDto {
-    private int shipmentId;
-    private boolean shipmentStatus;
+    private Integer shipmentId;
+    private Boolean shipmentStatus;
     private String cancellationReason;
 
 
