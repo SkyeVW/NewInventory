@@ -28,15 +28,13 @@ public class SupplierController { //
     // get the supplier name for specific itemId
     @GetMapping("/Supplier/name/{itemId}")
     Supplier retrieveSupplierName(@PathVariable("itemId") int itemId) {
-        return repository.findById(Long.valueOf(itemId))
-                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
+        return repository.retrieveSupplierName(itemId);
     }
 
     // get supplier's id for specific itemId
     @GetMapping("/Supplier/id/{itemId}")
     Supplier retrieveSupplierId(@PathVariable("itemId") int itemId) {
-        return repository.findById(Long.valueOf(itemId))
-                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
+        return repository.retrieveSupplierId(itemId);
     }
 
 }
