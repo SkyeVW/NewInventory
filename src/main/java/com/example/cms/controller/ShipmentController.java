@@ -1,5 +1,6 @@
 package com.example.cms.controller;
 
+import com.example.cms.controller.dto.ShipmentDto;
 import com.example.cms.controller.exceptions.ShipmentNotFoundException;
 import com.example.cms.model.entity.Professor;
 import com.example.cms.model.entity.Shipment;
@@ -77,7 +78,8 @@ public class ShipmentController { //
 
     // update shipmentStatus according to user input
     @PutMapping("/Shipment/status/{shipmentId}/{updatedStatus}")
-    Shipment updateStatus(@PathVariable("shipmentId") int shipmentId, @PathVariable("updatedStatus") boolean updatedStatus) {
+    Shipment updateStatus(@RequestBody ShipmentDto shipmentDto, @PathVariable("shipmentId") int shipmentId, @PathVariable("updatedStatus") boolean updatedStatus) {
+        boolean shipmentStatus = shipmentDto.getshipmentStatus();
 
     }
 }
