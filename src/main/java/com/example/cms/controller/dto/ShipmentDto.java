@@ -10,4 +10,6 @@ public class ShipmentDto {
     private int shipmentId;
     private boolean shipmentStatus;
     private String cancellationReason;
+
+
 }

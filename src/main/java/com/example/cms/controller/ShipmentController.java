@@ -79,7 +79,16 @@ public class ShipmentController { //
     // update shipmentStatus according to user input
     @PutMapping("/Shipment/status/{shipmentId}/{updatedStatus}")
     Shipment updateStatus(@RequestBody ShipmentDto shipmentDto, @PathVariable("shipmentId") int shipmentId, @PathVariable("updatedStatus") boolean updatedStatus) {
-        boolean shipmentStatus = shipmentDto.getshipmentStatus();
 
+        boolean shipmentStatus = shipmentDto.getshipmentStatus();
+        Shipment key = new Shipment();
+        key.setShipmentId(shipmentDto.getShipmentId);
+        key.setUpdatedStatus(shipmentDto.getUpdatedStatus);
+
+        return repository.findById(key)
+                .map(shipment -> {
+                    shipment.setShipmentId(shipmentDto.getShipmentId);
+                    return repository.save(shipment);
+                });
     }
 }

@@ -54,6 +54,8 @@ public class Shipment {
     @Nullable
     private String cancellationReason;
 
+    public Shipment(){}
+
     public Shipment(int shipmentId, int shipmentMonth, int shipmentDay, int shipmentYear, int shipmentSize, int newLotNumber, int newItemId, int newExpiryMonth, int newExpiryDay, int newExpiryYear, boolean shipmentStatus, String cancellationReason){
         this.shipmentId = shipmentId;
         this.shipmentMonth = shipmentMonth;
