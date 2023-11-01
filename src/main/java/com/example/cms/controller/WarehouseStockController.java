@@ -1,8 +1,10 @@
 package com.example.cms.controller;
 
-import com.example.cms.controller.exceptions.ProfessorNotFoundException;
+import com.example.cms.controller.exceptions.WarehouseStockNotFoundException;
 import com.example.cms.model.entity.Professor;
+import com.example.cms.model.entity.WarehouseStock;
 import com.example.cms.model.repository.ProfessorRepository;
+import com.example.cms.model.repository.WarehouseStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,16 +14,24 @@ import java.util.List;
 @RestController
 public class WarehouseStockController { //
     @Autowired
-    private final ProfessorRepository repository;
+    private final WarehouseStockRepository repository;
 
     // test
-    public WarehouseStockController(ProfessorRepository repository) {
+    public WarehouseStockController(WarehouseStockRepository repository) {
         this.repository = repository;
     }
 
-    @GetMapping("/professors")
-    List<Professor> retrieveAllProfessors() {
+    // get items that are currently in stock
+    @GetMapping("/WarehouseStock/{itemId}")
+    List<WarehouseStock> retrieveAllItemsId() {
         return repository.findAll();
+    }
+
+    // get item names
+    @GetMapping("/WarehouseStock/name/{itemId}")
+    List<WarehouseStock> retrieveAllItemsName() {
+
+        return repository.findById(Long.valueOf(itemId));
     }
 
     @PostMapping("/professors")
