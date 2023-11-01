@@ -30,19 +30,19 @@ public class ShipmentController { //
     // get month this shipment is being shipped
     @GetMapping("/Shipment/dateShipment/{shipmentId}")
     Shipment retrieveDateShipment(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveDateShipment(Long.valueOf(shipmentId)); // NOT SURE if can do long.valueOf
+        return repository.retrieveDateShipment(shipmentId); // NOT SURE if can do long.valueOf
     }
 
     // get size of shipment
     @GetMapping("/Shipment/size/{shipmentId}")
     Shipment retrieveSize(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveSize(Long.valueOf(shipmentId)); // NOT SURE if can do long.valueOf
+        return repository.retrieveSize(shipmentId); // NOT SURE if can do long.valueOf
     }
 
     // get new lot number for the new products that are shipping
     @GetMapping("/Shipment/newLotNum/{shipmentId}")
     Shipment retrieveNewLotNum(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveNewLotNum(Long.valueOf(shipmentId)); // NOT SURE if can do long.valueOf
+        return repository.retrieveNewLotNum(shipmentId); // NOT SURE if can do long.valueOf
     }
 
     // get new itemId (in a list) for new products that are shipping
@@ -74,7 +74,7 @@ public class ShipmentController { //
     @PutMapping("/Shipment/status/{shipmentId}/{updatedStatus}")
     Shipment updateStatus(@RequestBody ShipmentDto shipmentDto, @PathVariable("shipmentId") int shipmentId, @PathVariable("updatedStatus") boolean updatedStatus) {
 
-        boolean shipmentStatus = shipmentDto.get();
+        boolean shipmentStatus = shipmentDto.get;
         Shipment key = new Shipment();
         key.setShipmentId(shipmentDto.getShipmentId);
         key.setUpdatedStatus(shipmentDto.getUpdatedStatus);
