@@ -16,9 +16,28 @@ public interface OrderInformationRepository extends JpaRepository<OrderInformati
     @Query(value = "select orderId from OrderInformation OI where itemId = :itemId ", nativeQuery = true)
     OrderInformation retrieveOrderId(@Param("itemId") int itemId);
 
+    // get supplier name for item
+    @Query(value = "select supplierName from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
+    OrderInformation retrieveSupplierName(@Param("orderId") int orderId);
 
-    @Query(value = "select * from students where " +
-            "id IN (SELECT s.id FROM STUDENTS s INNER JOIN MARKS m ON s.id = m.studentID " +
-            "group by s.id HAVING AVG(Mark) >= 90)", nativeQuery = true)
-    List<OrderInformation> findTopStudents();
+    // get supplier id for item
+    @Query(value = "select supplierId from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
+    OrderInformation retrieveSupplierId(@Param("orderId") int orderId);
+
+    // get order date for item
+    @Query(value = "select orderDate from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
+    OrderInformation retrieveOrderDate(@Param("orderId") int orderId);
+
+    // get expected arrival date for item
+    @Query(value = "select expectedArrivalDate from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
+    OrderInformation retrieveExpectedArrival(@Param("orderId") int orderId);
+
+    // get itemId for item
+    @Query(value = "select itemId from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
+    OrderInformation retrieveItemId(@Param("orderId") int orderId);
+
+    // get order quantity for item
+    @Query(value = "select orderQuantity from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
+    OrderInformation retrieveOrderQuantity(@Param("orderId") int orderId);
+
 }
