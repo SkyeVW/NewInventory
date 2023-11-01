@@ -12,25 +12,25 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, Long> {
+public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, Integer> {
 
     // get all info of item
     @Query(value = "select * from WarehouseStock s where itemId = :itemId", nativeQuery = true)
-    WarehouseStock retrieveAllInfo(@Param("itemId") String itemId);
+    WarehouseStock retrieveAllInfo(@Param("itemId") int itemId);
 
     // get item name in warehouse
     @Query(value = "select itemName from WarehouseStock s where itemId = :itemId", nativeQuery = true)
-    WarehouseStock retrieveAllItemsName(@Param("itemId") String itemId);
+    WarehouseStock retrieveAllItemsName(@Param("itemId") int itemId);
 
     // get current quantity of item
     @Query(value = "select currentQuantity from WarehouseStock s where itemId = :itemId", nativeQuery = true)
-    WarehouseStock retrieveCurrentQuantity(@Param("itemId") String itemId);
+    WarehouseStock retrieveCurrentQuantity(@Param("itemId") int itemId);
 
     // get existing lot number of item
     @Query(value = "select lotNumber from WarehouseStock s where itemId = :itemId", nativeQuery = true)
-    WarehouseStock retrieveExistingLotNum(@Param("itemId") String itemId);
+    WarehouseStock retrieveExistingLotNum(@Param("itemId") int itemId);
 
     // get expiry date of item (month day year)
     @Query(value = "select expiryMonth, expiryDay, expiryYear from WarehouseStock s where itemId = :itemId", nativeQuery = true)
-    WarehouseStock retrieveExpiryDate(@Param("itemId") String itemId);
+    WarehouseStock retrieveExpiryDate(@Param("itemId") int itemId);
 }

@@ -31,36 +31,31 @@ public class WarehouseStockController { //
     // get every info for items that are currently in stock
     @GetMapping("/WarehouseStock/{itemId}")
     WarehouseStock retrieveAllInfo(@PathVariable("itemId") int itemId) {
-        return repository.findById(Long.valueOf(itemId))
-                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
+        return repository.retrieveAllInfo(itemId);
     }
 
     // get item names
     @GetMapping("/WarehouseStock/name/{itemId}")
     WarehouseStock retrieveAllItemsName(@PathVariable("itemId") int itemId) {
-        return repository.findById(Long.valueOf(itemId))
-                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
+        return repository.retrieveAllItemsName(itemId);
     }
 
     // get current quantity of specific itemId
     @GetMapping("/WarehouseStock/currentQuantity/{itemId}")
     WarehouseStock retrieveCurrentQuantity(@PathVariable("itemId") int itemId) {
-        return repository.findById(Long.valueOf(itemId))
-                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
+        return repository.retrieveCurrentQuantity(itemId);
     }
 
     // get existing lot number of specific itemId
     @GetMapping("/WarehouseStock/lotNum/{itemId}")
     WarehouseStock retrieveExistingLotNum(@PathVariable("itemId") int itemId) {
-        return repository.findById(Long.valueOf(itemId))
-                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
+        return repository.retrieveExistingLotNum(itemId);
     }
 
     // get expiring date of specific itemId
     @GetMapping("/WarehouseStock/expiryDate/{itemId}")
     WarehouseStock retrieveExpiryDate(@PathVariable("itemId") int itemId) {
-        return repository.findById(Long.valueOf(itemId))
-                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
+        return repository.retrieveExpiryDate(itemId);
     }
 
     // update current quantity according to user input (manager)
