@@ -17,4 +17,16 @@ public interface WarehouseStockRepository extends JpaRepository<WarehouseStock, 
     // get item name in warehouse
     @Query(value = "select itemName from WarehouseStock s where itemId = :itemId", nativeQuery = true)
     WarehouseStock retrieveAllItemsName(@Param("itemId") String itemId);
+
+    // get current quantity of item
+    @Query(value = "select currentQuantity from WarehouseStock s where itemId = :itemId", nativeQuery = true)
+    WarehouseStock retrieveCurrentQuantity(@Param("itemId") String itemId);
+
+    // get existing lot number of item
+    @Query(value = "select lotNumber from WarehouseStock s where itemId = :itemId", nativeQuery = true)
+    WarehouseStock retrieveExistingLotNum(@Param("itemId") String itemId);
+
+    // get expiry date of item (month day year)
+    @Query(value = "select expiryMonth, expiryDay, expiryYear from WarehouseStock s where itemId = :itemId", nativeQuery = true)
+    WarehouseStock retrieveExpiryDate(@Param("itemId") String itemId);
 }
