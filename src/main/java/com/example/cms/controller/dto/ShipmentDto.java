@@ -32,4 +32,7 @@ public class ShipmentDto {
     private int newExpiryYear;  // just for displaying
 
 
+    public boolean getShipmentStatus() {
+        return this.shipmentStatus;
+    }
 }

@@ -83,10 +83,16 @@ public class ShipmentController { //
 
         return repository.findById(shipmentId)
                 .map(shipment -> {
-
                     shipment.setShipmentStatus(updatedStatus);
                     return repository.save(shipment);
-                });
+                })
+                .orElseGet(() ->{
+                    Shipment newShipment = new Shipment();
+                    newShipment.setShipmentId(shipmentDto.getShipmentId());
+                    newShipment.setShipmentStatus(shipmentDto.getShipmentStatus());
+                    return repository.save(newShipment);
+                })
+                ;
     }
 }
 
