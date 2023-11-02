@@ -32,7 +32,7 @@ public class ShipmentController { //
 
     // get date this shipment is being shipped
     @GetMapping("/Shipment/dateShipment/{shipmentId}")
-    Optional<Shipment> retrieveDateShipment(@PathVariable("shipmentId") int shipmentId) {
+    List<Shipment> retrieveDateShipment(@PathVariable("shipmentId") int shipmentId) {
         return repository.retrieveDateShipment(shipmentId); // NOT SURE if can do long.valueOf
     }
 
