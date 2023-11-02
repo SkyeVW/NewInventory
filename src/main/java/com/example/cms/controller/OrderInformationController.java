@@ -26,7 +26,7 @@ public class OrderInformationController { //
         return repository.findAll();
     }
 
-    // get orderId for specific item
+    // get order info for specific item id // filter on front end to get only order id of order info
     @GetMapping("/OrderInformation/{itemId}")
     OrderInformation retrieveOrderId(@PathVariable("itemId") int itemId) {
         return repository.retrieveOrderId(itemId);

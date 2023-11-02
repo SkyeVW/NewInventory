@@ -67,7 +67,8 @@ INSERT INTO professors (id, firstName, lastName, email, office, salary) VALUES (
 
 INSERT INTO courses (code, name, professorId) VALUES ('GOT123', 'A Game of Thrones', 1122);
 INSERT INTO courses (code, name, professorId) VALUES ('GOT456', 'A Clash of Kings', 3344);
-INSERT INTO courses (code, name, professorId) VALUES ('GOT789', 'A Storm of Swords', 5566);
+INSERT INTO courses (code,
+ name, professorId) VALUES ('GOT789', 'A Storm of Swords', 5566);
 
 INSERT INTO marks(studentId, courseCode, mark) VALUES(1111, 'GOT123', 80);
 INSERT INTO marks(studentId, courseCode, mark) VALUES(2222, 'GOT123', 85);

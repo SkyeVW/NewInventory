@@ -37,7 +37,7 @@ public class OrderInformation {
     private long expectedArrivalDate;
 
     @OneToOne
- //   @NotEmpty
+    @NotEmpty
     @JoinColumn(name="itemId")
     private WarehouseStock itemID;
 
