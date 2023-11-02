@@ -47,7 +47,7 @@ public class WarehouseStock {
     @JoinColumn(name="itemId")
 //    @OneToMany(mappedBy = "itemId",cascade = CascadeType.ALL)
 //    private List<Supplier> suppliers = new ArrayList<>();
-    private Supplier chitemId;
+    private Supplier supplier;
 
 
     public WarehouseStock(int itemId, int currentQuantity, int lotNumber, int expiryMonth, int expiryDay, int expiryYear, String itemName){
