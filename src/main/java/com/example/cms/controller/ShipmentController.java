@@ -93,8 +93,7 @@ public class ShipmentController { //
                     newShipment.setShipmentId(shipmentDto.getShipmentId());
                     newShipment.setShipmentStatus(shipmentDto.getShipmentStatus());
                     return repository.save(newShipment);
-                })
-                ;
+                });
     }
 
     // delete the order that we decide to cancel
