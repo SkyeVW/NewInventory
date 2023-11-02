@@ -71,4 +71,5 @@ public class Shipment {
         this.cancellationReason = cancellationReason;
     }
 
+
 }

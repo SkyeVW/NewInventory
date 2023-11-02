@@ -68,21 +68,25 @@ public class ShipmentController { //
     @GetMapping("/Shipment/reasonCancellation/{shipmentId}")
     Shipment retrieveReason(@PathVariable("shipmentId") int shipmentId) {
         return repository.retrieveReason(shipmentId); // NOT SURE if can do long.valueOf
+        //Shipment shipment = repository.findById(shipmentId)
+        //return shipment.getReason();
     }
 
     // update shipmentStatus according to user input
     @PutMapping("/Shipment/status/{shipmentId}/{updatedStatus}")
     Shipment updateStatus(@RequestBody ShipmentDto shipmentDto, @PathVariable("shipmentId") int shipmentId, @PathVariable("updatedStatus") boolean updatedStatus) {
 
-        boolean shipmentStatus = shipmentDto.get;
-        Shipment key = new Shipment();
-        key.setShipmentId(shipmentDto.getShipmentId);
-        key.setUpdatedStatus(shipmentDto.getUpdatedStatus);
+//        boolean shipmentStatus = shipmentDto;
+//        Shipment shipment = new Shipment();
+//        shipment.setShipmentId(shipmentDto.getShipmentId());
+//        shipment.setUpdatedStatus(shipmentDto.getUpdatedStatus());
 
-        return repository.findById(key)
+        return repository.findById(shipmentId)
                 .map(shipment -> {
-                    shipment.setShipmentId(shipmentDto.getShipmentId);
+
+                    shipment.setShipmentStatus(updatedStatus);
                     return repository.save(shipment);
                 });
     }
 }
+

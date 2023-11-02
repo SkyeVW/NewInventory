@@ -31,16 +31,16 @@ public class CourseController {
         return repository.findAll();
     }
 
-    @PostMapping("/courses")
-    Course createCourse(@RequestBody CourseDto courseDto) {
-        Course newCourse = new Course();
-        newCourse.setName(courseDto.getName());
-        newCourse.setCode(courseDto.getCode());
-        Professor professor = professorRepository.findById(courseDto.getProfessorId()).orElseThrow(
-                () -> new ProfessorNotFoundException(courseDto.getProfessorId()));
-        newCourse.setProfessor(professor);
-        return repository.save(newCourse);
-    }
+//    @PostMapping("/courses")
+//    Course createCourse(@RequestBody CourseDto courseDto) {
+//        Course newCourse = new Course();
+//        newCourse.setName(courseDto.getName());
+//        newCourse.setCode(courseDto.getCode());
+//        Professor professor = professorRepository.findById(courseDto.getProfessorId()).orElseThrow(
+//                () -> new ProfessorNotFoundException(courseDto.getProfessorId()));
+//        newCourse.setProfessor(professor);
+//        return repository.save(newCourse);
+//    }
 
     @GetMapping("/courses/{code}")
     Course retrieveCourse(@PathVariable("code") String courseCode) {
@@ -48,25 +48,25 @@ public class CourseController {
                 .orElseThrow(() -> new CourseNotFoundException(courseCode));
     }
 
-    @PutMapping("/courses/{code}")
-    Course updateCourse(@RequestBody CourseDto courseDto, @PathVariable("code") String courseCode) {
-        return repository.findById(courseCode)
-                .map(course -> {
-                    course.setName(courseDto.getName());
-                    Professor professor = professorRepository.findById(courseDto.getProfessorId()).orElseThrow(
-                            () -> new ProfessorNotFoundException(courseDto.getProfessorId()));
-                    course.setProfessor(professor);
-                    return repository.save(course);
-                })
-                .orElseGet(() -> {
-                    Course newCourse = new Course();
-                    newCourse.setCode(courseCode);
-                    Professor professor = professorRepository.findById(courseDto.getProfessorId()).orElseThrow(
-                            () -> new ProfessorNotFoundException(courseDto.getProfessorId()));
-                    newCourse.setProfessor(professor);
-                    return repository.save(newCourse);
-                });
-    }
+//    @PutMapping("/courses/{code}")
+//    Course updateCourse(@RequestBody CourseDto courseDto, @PathVariable("code") String courseCode) {
+//        return repository.findById(courseCode)
+//                .map(course -> {
+//                    course.setName(courseDto.getName());
+//                    Professor professor = professorRepository.findById(courseDto.getProfessorId()).orElseThrow(
+//                            () -> new ProfessorNotFoundException(courseDto.getProfessorId()));
+//                    course.setProfessor(professor);
+//                    return repository.save(course);
+//                })
+//                .orElseGet(() -> {
+//                    Course newCourse = new Course();
+//                    newCourse.setCode(courseCode);
+//                    Professor professor = professorRepository.findById(courseDto.getProfessorId()).orElseThrow(
+//                            () -> new ProfessorNotFoundException(courseDto.getProfessorId()));
+//                    newCourse.setProfessor(professor);
+//                    return repository.save(newCourse);
+//                });
+//    }
 
     @DeleteMapping("/courses/{code}")
     void deleteCourse(@PathVariable("code") String courseCode) {
