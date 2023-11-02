@@ -8,7 +8,7 @@ INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, exp
     VALUES(5, 90, 3003, 09, 21, 2026, 'Oil');
 
 --INSERT INTO Supplier (supplierId, supplierName) VALUES(10, 'Farm Yao');
-INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(10, 'Farm Yao', 3);
+INSERT INTO Supplier (supplierI, supplierName, itemID) VALUES(10, 'Farm Yao', 3);
 --INSERT INTO Supplier (supplierId, supplierName) VALUES(11, 'Sophia Roman Empire');
 INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(11, 'Sophia Roman Empire', 5);
 INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(12, 'LQ Pink', 1);
@@ -16,18 +16,18 @@ INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(12, 'LQ Pink');
 --INSERT INTO Supplier (supplierId, supplierName) VALUES(13, 'Sasha Mangoes');
 INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(13, 'Sasha Mangoes', 4);
 
-INSERT INTO OrderInformation (orderId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
-    VALUES (5000, 01022023, 01102023, 5, 200, TRUE);
-INSERT INTO OrderInformation (orderId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
-    VALUES (5001, 11022023, 01102024, 1, 70, FALSE);
-INSERT INTO OrderInformation (orderId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
-   VALUES (5002, 06272023, 07272023, 3, 150, TRUE);
---INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
---    VALUES (5000, 'Sasha Mangoes', 13, 01022023, 01102023, 5, 200, TRUE);
---INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
---    VALUES (5001, 'Farm Yao', 10, 11022023, 01102024, 1, 70, FALSE);
---INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
---   VALUES (5002, 'LQ Pink', 12, 06272023, 07272023, 3, 150, TRUE);
+--INSERT INTO OrderInformation (orderId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
+--    VALUES (5000, 01022023, 01102023, 5, 200, TRUE);
+--INSERT INTO OrderInformation (orderId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
+--    VALUES (5001, 11022023, 01102024, 1, 70, FALSE);
+--INSERT INTO OrderInformation (orderId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
+--   VALUES (5002, 06272023, 07272023, 3, 150, TRUE);
+INSERT INTO OrderInformation (orderId, supplierNAME, supplierID, orderDate, expectedArrivalDate, itemID, orderQuantity, orderConfirmation)
+    VALUES (5000, 'Sasha Mangoes', 13, 01022023, 01102023, 5, 200, TRUE);
+INSERT INTO OrderInformation (orderId, supplierNAME, supplierID, orderDate, expectedArrivalDate, itemID, orderQuantity, orderConfirmation)
+    VALUES (5001, 'Farm Yao', 10, 11022023, 01102024, 1, 70, FALSE);
+INSERT INTO OrderInformation (orderId, supplierNAME, supplierID, orderDate, expectedArrivalDate, itemID, orderQuantity, orderConfirmation)
+   VALUES (5002, 'LQ Pink', 12, 06272023, 07272023, 3, 150, TRUE);
 
 INSERT INTO Shipment (shipmentId, shipmentMonth, shipmentDay, shipmentYear, shipmentSize, newLotNumber, newItemId,
     newExpiryMonth, newExpiryDay, newExpiryYear, shipmentStatus, cancellationReason) VALUES (1037, 06, 18, 2024, 100, 4037, 1, 06, 18, 2027, TRUE,'');
