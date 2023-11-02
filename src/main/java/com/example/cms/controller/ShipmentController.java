@@ -24,6 +24,7 @@ public class ShipmentController { //
     List<Shipment> retrieveAllShipment() {
         return repository.findAll();
     }
+
     @GetMapping("/Shipment/{shipmentId}")
     Optional<Shipment> retrieveShipmentById(@PathVariable("shipmentId") int shipmentId) {
         return repository.findById(shipmentId);
