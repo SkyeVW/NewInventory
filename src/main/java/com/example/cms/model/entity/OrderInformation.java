@@ -26,7 +26,7 @@ public class OrderInformation {
     private Supplier supplierName;
 
     @ManyToOne
-    @NotEmpty
+//    @NotEmpty
     @JoinColumn(name="supplerId")
     private Supplier supplierId;
 
@@ -39,7 +39,7 @@ public class OrderInformation {
     @OneToOne
  //   @NotEmpty
     @JoinColumn(name="itemId")
-    private Supplier itemId;
+    private WarehouseStock itemId;
 
     @NotEmpty
     private int orderQuantity;
@@ -48,7 +48,7 @@ public class OrderInformation {
     private boolean orderConfirmation;
 
 //    public OrderInformation() {}
-    public OrderInformation(int orderId, Supplier supplierName, Supplier supplierId, long orderDate, long expectedArrivalDate, Supplier itemId, int orderQuantity, boolean orderConfirmation){
+    public OrderInformation(int orderId, Supplier supplierName, Supplier supplierId, long orderDate, long expectedArrivalDate, WarehouseStock itemId, int orderQuantity, boolean orderConfirmation){
         this.orderId = orderId;
         this.supplierName = supplierName;
         this.supplierId = supplierId;

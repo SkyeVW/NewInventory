@@ -31,11 +31,11 @@ public class Restock { // requests from clients
     @NotEmpty
     private int storeId;
 
-//    public Restock(int restockRequestId, WarehouseStock itemId, int quantity, int storeId){
-//        this.restockRequestId = restockRequestId;
-//        this.itemId = itemId;
-//        this.quantity = quantity;
-//        this.storeId = storeId;
-//    }
+    public Restock(int restockRequestId, List<WarehouseStock> itemId, int quantity, int storeId){
+        this.restockRequestId = restockRequestId;
+        this.itemId = itemId;
+        this.quantity = quantity;
+        this.storeId = storeId;
+    }
 
 }

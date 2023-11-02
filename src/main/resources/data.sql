@@ -29,7 +29,7 @@ INSERT INTO OrderInformation (orderId, orderDate, expectedArrivalDate, itemId, o
 --   VALUES (5002, 'LQ Pink', 12, 06272023, 07272023, 3, 150, TRUE);
 
 INSERT INTO Shipment (shipmentId, shipmentMonth, shipmentDay, shipmentYear, shipmentSize, newLotNumber, newItemId,
-    newExpiryMonth, newExpiryDay, newExpiryYear, shipmentStatus, cancellationReason) VALUES (1037, 06, 18, 2024, 100, 4037, 1, 06, 18, 2027, TRUE);
+    newExpiryMonth, newExpiryDay, newExpiryYear, shipmentStatus, cancellationReason) VALUES (1037, 06, 18, 2024, 100, 4037, 1, 06, 18, 2027, TRUE,'');
 INSERT INTO Shipment (shipmentId, shipmentMonth, shipmentDay, shipmentYear, shipmentSize, newLotNumber, newItemId,
     newExpiryMonth, newExpiryDay, newExpiryYear, shipmentStatus, cancellationReason) VALUES (1038, 04, 13, 2024, 65, 4038, 2, 04, 13, 2027, FALSE, 'not enough storage due to lack of sales');
 
@@ -38,11 +38,15 @@ INSERT INTO ExpiringItems (itemId, expiryMonth, expiryDay, expiryYear, lotNumber
 INSERT INTO ExpiringItems (itemId, expiryMonth, expiryDay, expiryYear, lotNumber) VALUES (4, 03, 12, 2024, 3002);
 INSERT INTO ExpiringItems (itemId, expiryMonth, expiryDay, expiryYear, lotNumber) VALUES (5, 09, 21, 2026, 3003);
 
-INSERT INTO Restock (restockRequestId, itemId, quantity, storeId) VALUES (6000, 4, 20, 7000);
-INSERT INTO Restock (restockRequestId, itemId, quantity, storeId) VALUES (6001, 1, 15, 7001);
+INSERT INTO Restock (restockRequestId, quantity, storeId) VALUES (6000, 20, 7000);
+INSERT INTO Restock (restockRequestId, quantity, storeId) VALUES (6001, 15, 7001);
+--INSERT INTO Restock (restockRequestId, itemId, quantity, storeId) VALUES (6000, 4, 20, 7000);
+--INSERT INTO Restock (restockRequestId, itemId, quantity, storeId) VALUES (6001, 1, 15, 7001);
 
-INSERT INTO Shipping (shipmentId, storeId, itemId, shippingQuantity, shipmentStatus) VALUES (8000, 7000, 4, 20, TRUE);
-INSERT INTO Shipping (shipmentId, storeId, itemId, shippingQuantity, shipmentStatus) VALUES (8001, 7001, 1, 15, FALSE);
+INSERT INTO Shipping (shipmentId, shippingQuantity, shipmentStatus) VALUES (8000, 20, TRUE);
+INSERT INTO Shipping (shipmentId, shippingQuantity, shipmentStatus) VALUES (8001, 15, FALSE);
+--INSERT INTO Shipping (shipmentId, storeId, itemId, shippingQuantity, shipmentStatus) VALUES (8000, 7000, 4, 20, TRUE);
+--INSERT INTO Shipping (shipmentId, storeId, itemId, shippingQuantity, shipmentStatus) VALUES (8001, 7001, 1, 15, FALSE);
 
 INSERT INTO departments (code, name, contactEmail) VALUES ('MIE', 'Mechanical and Industrial Engineering', 'reception@mie.utoronto.ca');
 INSERT INTO departments (code, name, contactEmail) VALUES ('ECE', 'Electrical and Computer Engineering', 'eceinquiry@utoronto.ca');

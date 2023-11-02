@@ -21,9 +21,9 @@ public class Shipping { // outgoing from warehouse
     @NotNull
     private int shipmentId;
 
-    @NotEmpty
-    @OneToMany //one restock can have many itemId
-    @JoinColumn(name="storeId")
+    @OneToMany(mappedBy = "storeId") //one restock can have many itemId
+//    @NotEmpty
+//    @JoinColumn(name="storeId")
     private List<Restock> storeId;
 
     @NotEmpty
