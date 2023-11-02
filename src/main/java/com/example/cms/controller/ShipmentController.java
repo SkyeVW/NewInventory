@@ -1,15 +1,13 @@
 package com.example.cms.controller;
 
 import com.example.cms.controller.dto.ShipmentDto;
-import com.example.cms.controller.exceptions.ShipmentNotFoundException;
-import com.example.cms.model.entity.Professor;
 import com.example.cms.model.entity.Shipment;
-import com.example.cms.model.repository.ProfessorRepository;
 import com.example.cms.model.repository.ShipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -22,9 +20,13 @@ public class ShipmentController { //
     }
 
     // get shipmentId
-    @GetMapping("/Shipment/{shipmentId}")
+    @GetMapping("/Shipment/")
     List<Shipment> retrieveAllShipment() {
         return repository.findAll();
+    }
+    @GetMapping("/Shipment/{shipmentId}")
+    Optional<Shipment> retrieveShipmentById(@PathVariable("shipmentId") int shipmentId) {
+        return repository.findById(shipmentId);
     }
 
     // get month this shipment is being shipped

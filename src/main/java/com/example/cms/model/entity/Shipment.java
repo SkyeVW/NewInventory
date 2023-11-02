@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.lang.Nullable;
 
 @Entity
-@NoArgsConstructor
+//@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "Shipment")

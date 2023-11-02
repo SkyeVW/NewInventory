@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.*;
 
 
 @Entity
@@ -20,9 +21,9 @@ public class Restock { // requests from clients
     private int restockRequestId;
 
     @NotEmpty
-    @OneToMany //one restock can have many itemId
-    @JoinColumn(name="itemId")
-    private WarehouseStock itemId;
+    @OneToMany(mappedBy = "itemId") //one restock can have many itemId
+//    @JoinColumn(name="itemId")
+    private List<WarehouseStock> itemId = new ArrayList<>();
 
     @NotEmpty
     private int quantity;
@@ -30,11 +31,11 @@ public class Restock { // requests from clients
     @NotEmpty
     private int storeId;
 
-    public Restock(int restockRequestId, WarehouseStock itemId, int quantity, int storeId){
-        this.restockRequestId = restockRequestId;
-        this.itemId = itemId;
-        this.quantity = quantity;
-        this.storeId = storeId;
-    }
+//    public Restock(int restockRequestId, WarehouseStock itemId, int quantity, int storeId){
+//        this.restockRequestId = restockRequestId;
+//        this.itemId = itemId;
+//        this.quantity = quantity;
+//        this.storeId = storeId;
+//    }
 
 }

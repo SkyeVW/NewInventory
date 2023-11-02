@@ -8,9 +8,12 @@ INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, exp
     VALUES(5, 90, 3003, 09, 21, 2026, 'Oil');
 
 INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(10, 'Farm Yao', 1);
+--INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(10, 'Farm Yao', 3);
 INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(11, 'Sophia Roman Empire', 4);
+--INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(11, 'Sophia Roman Empire', 5);
 INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(12, 'LQ Pink', 3);
 INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(13, 'Sasha Mangoes', 5);
+--INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(13, 'Sasha Mangoes', 4);
 
 INSERT INTO OrderInformation (orderId, supplierName, supplierId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
     VALUES (5000, 'Sasha Mangoes', 13, 01022023, 01102023, 5, 200, TRUE);

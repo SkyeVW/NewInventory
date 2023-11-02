@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.*;
 
 
 @Entity
@@ -24,15 +25,16 @@ public class Supplier {
     private String supplierName;
 
     @NotEmpty
-    @OneToMany
-    @JoinColumn(name="itemId")
-    private WarehouseStock itemId;
+    private int itemId;
+//    @OneToMany(mappedBy = "itemId", cascade = CascadeType.ALL)
+//    @JoinColumn(name="itemId")
+    //private List<WarehouseStock> itemId = new ArrayList<>();
 
-    public Supplier(int supplierId, String supplierName, WarehouseStock itemId){
-        this.supplierId = supplierId;
-        this.supplierName = supplierName;
-        this.itemId = itemId;
-
-    }
+//    public Supplier(int supplierId, String supplierName, WarehouseStock itemId){
+//        this.supplierId = supplierId;
+//        this.supplierName = supplierName;
+//        this.itemId = itemId;
+//
+//    }
 
 }
