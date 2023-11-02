@@ -70,7 +70,8 @@ public class ShipmentController { //
     // get the reason why shipment is cancelled
     @GetMapping("/Shipment/reasonCancellation/{shipmentId}")
     Shipment retrieveReason(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveReason(shipmentId); // NOT SURE if can do long.valueOf
+        return repository.findById(shipmentId)
+                .orElseThrow(); // NOT SURE if can do long.valueOf
         //Shipment shipment = repository.findById(shipmentId)
         //return shipment.getReason();
     }
