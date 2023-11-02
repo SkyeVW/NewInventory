@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
@@ -18,7 +19,7 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
     //get shipment date
     @Query(value = "select shipmentMonth, shipmentDay, shipmentYear from Shipment where " +
             "shipmentId = :shipmentId", nativeQuery = true)
-    List<Shipment> retrieveDateShipment(@Param("shipmentId") int shipmentId);
+    Optional<Shipment> retrieveDateShipment(@Param("shipmentId") int shipmentId);
 
     //get shipment size
     @Query(value = "select shipmentSize from Shipment s where " +
