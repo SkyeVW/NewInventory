@@ -66,10 +66,6 @@ public class WarehouseStockController { //
                     stock.setCurrentQuantity(warehouseStock.getCurrentQuantity());
                     return repository.save(stock);
                 })
-                .orElseGet(() -> {
-                    WarehouseStock newStock = new WarehouseStock();
-                    newStock.setItemId(itemId); //Need to come back
-                    return repository.save(newStock);
-                });
+                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
     }
 }
