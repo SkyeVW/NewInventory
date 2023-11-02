@@ -24,17 +24,17 @@ public class Supplier {
     @NotEmpty
     private String supplierName;
 
+    @OneToMany(mappedBy = "itemId")
     @NotEmpty
-    private int itemId;
-//    @OneToMany(mappedBy = "itemId", cascade = CascadeType.ALL)
 //    @JoinColumn(name="itemId")
-    //private List<WarehouseStock> itemId = new ArrayList<>();
+ //   private WarehouseStock itemId;
+    private List<WarehouseStock> itemId = new ArrayList<>();
 
-//    public Supplier(int supplierId, String supplierName, WarehouseStock itemId){
-//        this.supplierId = supplierId;
-//        this.supplierName = supplierName;
-//        this.itemId = itemId;
-//
-//    }
+    public Supplier(int supplierId, String supplierName, List<WarehouseStock> itemId){
+        this.supplierId = supplierId;
+        this.supplierName = supplierName;
+        this.itemId = itemId;
+
+    }
 
 }

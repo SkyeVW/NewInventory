@@ -3,6 +3,8 @@ package com.example.cms.controller;
 import com.example.cms.controller.exceptions.ProfessorNotFoundException;
 import com.example.cms.controller.exceptions.WarehouseStockNotFoundException;
 import com.example.cms.model.entity.Supplier;
+import com.example.cms.model.entity.WarehouseStock;
+
 import com.example.cms.model.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

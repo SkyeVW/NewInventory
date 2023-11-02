@@ -20,7 +20,6 @@ public class WarehouseStock {
 
     @Id
     @NotNull
-
 //    @ManyToOne
 //    @JoinColumn(name="itemId")
     private int itemId;
@@ -43,11 +42,11 @@ public class WarehouseStock {
     @NotEmpty
     private int expiryYear;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="itemId")
-//    @OneToMany(mappedBy = "itemId",cascade = CascadeType.ALL)
-//    private List<Supplier> suppliers = new ArrayList<>();
-    private Supplier supplier;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="itemId")
+////    @OneToMany(mappedBy = "itemId",cascade = CascadeType.ALL)
+////    private List<Supplier> suppliers = new ArrayList<>();
+//    private Supplier supplier;
 
 
     public WarehouseStock(int itemId, int currentQuantity, int lotNumber, int expiryMonth, int expiryDay, int expiryYear, String itemName){
