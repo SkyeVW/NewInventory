@@ -12,6 +12,9 @@ import java.util.List;
 @Repository
 public interface OrderInformationRepository extends JpaRepository<OrderInformation, Integer> {
 
+    @Query(value = "select * from OrderInformation OI where itemId = :itemId ", nativeQuery = true)
+    OrderInformation retrieveAll();
+
     // get orderId for item
     @Query(value = "select orderId from OrderInformation OI where itemId = :itemId ", nativeQuery = true)
     OrderInformation retrieveOrderId(@Param("itemId") int itemId);

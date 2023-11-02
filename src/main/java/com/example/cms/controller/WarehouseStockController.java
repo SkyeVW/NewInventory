@@ -59,4 +59,17 @@ public class WarehouseStockController { //
     }
 
     // update current quantity according to user input (manager)
+    @PutMapping("/WarehouseStock/{itemId}")
+    WarehouseStock updateCurrentQuantity(@RequestBody WarehouseStock warehouseStock, @PathVariable("itemId") int itemId) {
+        return repository.findById(itemId)
+                .map(stock -> {
+                    stock.setCurrentQuantity(warehouseStock.getCurrentQuantity());
+                    return repository.save(stock);
+                })
+                .orElseGet(() -> {
+                    WarehouseStock newStock = new WarehouseStock();
+                    newStock.setItemId(itemId); //Need to come back
+                    return repository.save(newStock);
+                });
+    }
 }

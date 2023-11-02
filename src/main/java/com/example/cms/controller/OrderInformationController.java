@@ -21,6 +21,12 @@ public class OrderInformationController { //
     }
 
     // get orderId for specific item
+    @GetMapping("/OrderInformation")
+    List<OrderInformation> retrieveAllOrderInformation() {
+        return repository.findAll();
+    }
+
+    // get orderId for specific item
     @GetMapping("/OrderInformation/{itemId}")
     OrderInformation retrieveOrderId(@PathVariable("itemId") int itemId) {
         return repository.retrieveOrderId(itemId);
@@ -39,27 +45,44 @@ public class OrderInformationController { //
     }
 
     // get order date for specific item
-    @GetMapping("/WarehouseStock/date/{orderId}")
+    @GetMapping("/OrderInformation/date/{orderId}")
     OrderInformation retrieveOrderDate(@PathVariable("orderId") int orderId) {
         return repository.retrieveOrderDate(orderId);
     }
 
     // get order expected arrival date for specific item
-    @GetMapping("/WarehouseStock/expectedArrival/{orderId}")
+    @GetMapping("/OrderInformation/expectedArrival/{orderId}")
     OrderInformation retrieveExpectedArrival(@PathVariable("orderId") int orderId) {
         return repository.retrieveExpectedArrival(orderId);
     }
 
     // get itemId for specific item
-    @GetMapping("/WarehouseStock/itemId/{orderId}")
+    @GetMapping("/OrderInformation/itemId/{orderId}")
     OrderInformation retrieveItemId(@PathVariable("orderId") int orderId) {
         return repository.retrieveItemId(orderId);
     }
 
     // get order quantity for specific item
-    @GetMapping("/WarehouseStock/orderQuantity/{orderId}")
+    @GetMapping("/OrderInformation/orderQuantity/{orderId}")
     OrderInformation retrieveOrderQuantity(@PathVariable("orderId") int orderId) {
         return repository.retrieveOrderQuantity(orderId);
     }
 
+    // create new order
+    @PostMapping("/OrderInformation")
+    OrderInformation createOrderQuantity(@RequestBody OrderInformation orderInformation) {
+        OrderInformation newOrder = new OrderInformation();
+
+        newOrder.setOrderId(orderInformation.getOrderId());
+        newOrder.setSupplierName(orderInformation.getSupplierName());
+        newOrder.setSupplierId(orderInformation.getSupplierId());
+        newOrder.setOrderDate(orderInformation.getOrderDate());
+        newOrder.setExpectedArrivalDate(orderInformation.getExpectedArrivalDate());
+        newOrder.setItemId(orderInformation.getItemId());
+        newOrder.setOrderQuantity(orderInformation.getOrderQuantity());
+
+        return repository.save(newOrder);
+    }
+
+    // create
 }
