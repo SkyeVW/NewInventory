@@ -16,7 +16,7 @@ public interface OrderInformationRepository extends JpaRepository<OrderInformati
     OrderInformation retrieveAll();
 
     // get orderId for item
-    @Query(value = "select orderId from OrderInformation OI where itemId = :itemId ", nativeQuery = true)
+    @Query(value = "select orderId from OrderInformation OI where itemID = :itemId ", nativeQuery = true)
     OrderInformation retrieveOrderId(@Param("itemId") int itemId);
 
     // get supplier name for item

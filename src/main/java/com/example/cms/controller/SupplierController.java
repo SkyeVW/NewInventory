@@ -27,6 +27,12 @@ public class SupplierController { //
         return repository.findAll();
     }
 
+    // get all supplier with itemID
+    @GetMapping("/Supplier/name/{itemId}")
+    String retrieveAll(@PathVariable("itemId") int itemId) {
+        return repository.retrieveSupplierName(itemId);
+    }
+
     // get the supplier name for specific itemId
     @GetMapping("/Supplier/name/{itemId}")
     String retrieveSupplierName(@PathVariable("itemId") int itemId) {
