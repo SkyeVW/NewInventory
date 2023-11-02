@@ -94,5 +94,11 @@ public class ShipmentController { //
                 })
                 ;
     }
+
+    // delete the order that we decide to cancel
+    @DeleteMapping("/Shipment/{shipmentId}")
+    void deleteShipment(@PathVariable("shipmentId") int shipmentId) {
+        repository.deleteById(shipmentId);
+    }
 }
 
