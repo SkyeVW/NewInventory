@@ -12,9 +12,9 @@ public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
 
     // get supplier's name for item
     @Query(value = "select supplierName from WarehouseStock s where itemId = :itemId", nativeQuery = true)
-    Supplier retrieveSupplierName(@Param("itemId") int itemId);
+    String retrieveSupplierName(@Param("itemId") int itemId);
 
     // get supplier's id for item
     @Query(value = "select supplierId from WarehouseStock s where itemId = :itemId", nativeQuery = true)
-    Supplier retrieveSupplierId(@Param("itemId") int itemId);
+    Integer retrieveSupplierId(@Param("itemId") int itemId);
 }

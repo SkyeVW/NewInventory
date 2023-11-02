@@ -29,13 +29,13 @@ public class SupplierController { //
 
     // get the supplier name for specific itemId
     @GetMapping("/Supplier/name/{itemId}")
-    Supplier retrieveSupplierName(@PathVariable("itemId") int itemId) {
+    String retrieveSupplierName(@PathVariable("itemId") int itemId) {
         return repository.retrieveSupplierName(itemId);
     }
 
     // get supplier's id for specific itemId
     @GetMapping("/Supplier/id/{itemId}")
-    Supplier retrieveSupplierId(@PathVariable("itemId") int itemId) {
+    Integer retrieveSupplierId(@PathVariable("itemId") int itemId) {
         return repository.retrieveSupplierId(itemId);
     }
 

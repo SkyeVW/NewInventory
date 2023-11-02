@@ -36,25 +36,25 @@ public class WarehouseStockController { //
 
     // get item names
     @GetMapping("/WarehouseStock/name/{itemId}")
-    WarehouseStock retrieveAllItemsName(@PathVariable("itemId") int itemId) {
+    String retrieveAllItemsName(@PathVariable("itemId") int itemId) {
         return repository.retrieveAllItemsName(itemId);
     }
 
     // get current quantity of specific itemId
     @GetMapping("/WarehouseStock/currentQuantity/{itemId}")
-    WarehouseStock retrieveCurrentQuantity(@PathVariable("itemId") int itemId) {
+    Integer retrieveCurrentQuantity(@PathVariable("itemId") int itemId) {
         return repository.retrieveCurrentQuantity(itemId);
     }
 
     // get existing lot number of specific itemId
     @GetMapping("/WarehouseStock/lotNum/{itemId}")
-    WarehouseStock retrieveExistingLotNum(@PathVariable("itemId") int itemId) {
+    Integer retrieveExistingLotNum(@PathVariable("itemId") int itemId) {
         return repository.retrieveExistingLotNum(itemId);
     }
 
     // get expiring date of specific itemId
     @GetMapping("/WarehouseStock/expiryDate/{itemId}")
-    WarehouseStock retrieveExpiryDate(@PathVariable("itemId") int itemId) {
+    List<Object[]> retrieveExpiryDate(@PathVariable("itemId") int itemId) {
         return repository.retrieveExpiryDate(itemId);
     }
 

@@ -21,26 +21,26 @@ public interface OrderInformationRepository extends JpaRepository<OrderInformati
 
     // get supplier name for item
     @Query(value = "select supplierName from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
-    OrderInformation retrieveSupplierName(@Param("orderId") int orderId);
+    String retrieveSupplierName(@Param("orderId") int orderId);
 
     // get supplier id for item
     @Query(value = "select supplierId from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
-    OrderInformation retrieveSupplierId(@Param("orderId") int orderId);
+    Integer retrieveSupplierId(@Param("orderId") int orderId);
 
     // get order date for item
     @Query(value = "select orderDate from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
-    OrderInformation retrieveOrderDate(@Param("orderId") int orderId);
+    List<Object[]> retrieveOrderDate(@Param("orderId") int orderId);
 
     // get expected arrival date for item
     @Query(value = "select expectedArrivalDate from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
-    OrderInformation retrieveExpectedArrival(@Param("orderId") int orderId);
+    Long retrieveExpectedArrival(@Param("orderId") int orderId);
 
     // get itemId for item
     @Query(value = "select itemId from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
-    OrderInformation retrieveItemId(@Param("orderId") int orderId);
+    Integer retrieveItemId(@Param("orderId") int orderId);
 
     // get order quantity for item
     @Query(value = "select orderQuantity from OrderInformation OI where orderId = :orderId ", nativeQuery = true)
-    OrderInformation retrieveOrderQuantity(@Param("orderId") int orderId);
+    Integer retrieveOrderQuantity(@Param("orderId") int orderId);
 
 }
