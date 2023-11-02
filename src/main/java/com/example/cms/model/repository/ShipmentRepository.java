@@ -18,7 +18,7 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
     //get shipment date
     @Query(value = "select shipmentMonth, shipmentDay, shipmentYear from Shipment where " +
             "shipmentId = :shipmentId", nativeQuery = true)
-    Shipment retrieveDateShipment(@Param("shipmentId") int shipmentId);
+    List<Shipment> retrieveDateShipment(@Param("shipmentId") int shipmentId);
 
     //get shipment size
     @Query(value = "select shipmentSize from Shipment s where " +
