@@ -1,5 +1,6 @@
 package com.example.cms.model.repository;
 
+import com.example.cms.model.entity.Shipment;
 import com.example.cms.model.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,16 +10,43 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ShipmentRepository extends JpaRepository<Student, Long> {
+public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
 
-    @Query(value = "select * from students s " +
-            "where lower(s.firstName) like lower(concat('%', :searchTerm, '%')) " +
-            "or lower(s.lastName) like lower(concat('%', :searchTerm, '%'))", nativeQuery = true)
-    List<Student> search(@Param("searchTerm") String searchTerm);
+    @Query(value = "select * from Shipment S", nativeQuery = true)
+    List<Shipment> search(@Param("shipmentId") int shipmentId);
 
+    //get shipment date
+    @Query(value = "select shipmentMonth, shipmentDay, shipmentYear from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retrieveDateShipment(@Param("shipmentId") long shipmentId);
 
-    @Query(value = "select * from students where " +
-            "id IN (SELECT s.id FROM STUDENTS s INNER JOIN MARKS m ON s.id = m.studentID " +
-            "group by s.id HAVING AVG(Mark) >= 90)", nativeQuery = true)
-    List<Student> findTopStudents();
+    //get shipment size
+    @Query(value = "select size from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retrieveSize(@Param("shipmentId") long shipmentId);
+
+    // get new lot number for the new products that are shipping
+    @Query(value = "select newLotNumber from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retrieveNewLotNum(@Param("shipmentId") long shipmentId);
+
+    // get ALL new itemId for the new products that are shipping
+    @Query(value = "select newItemId from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    List<Shipment> findAllNewItemId(@Param("shipmentId") int shipmentId);
+
+    // get new expiry date for new products
+    @Query(value = "select newExpiryMonth, newExpiryDay, newExpiryYear from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retrieveNewExpiryDate(@Param("shipmentId") long shipmentId);
+
+    // get status of new products that are shipping
+    @Query(value = "select shipmentStatus from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retrieveStatus(@Param("shipmentId") long shipmentId);
+
+    // get reason for cancellation
+    @Query(value = "select cancellationReason from Shipment s where " +
+            "shipmentId = :shipmentId", nativeQuery = true)
+    Shipment retrieveReason(@Param("shipmentId") long shipmentId);
 }
