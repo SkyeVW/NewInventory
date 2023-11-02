@@ -7,13 +7,14 @@ INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, exp
 INSERT INTO WarehouseStock (itemId, currentQuantity, lotNumber, expiryMonth, expiryDay, expiryYear, itemName)
     VALUES(5, 90, 3003, 09, 21, 2026, 'Oil');
 
-INSERT INTO Supplier (supplierId, supplierName) VALUES(10, 'Farm Yao');
---INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(10, 'Farm Yao', 3);
-INSERT INTO Supplier (supplierId, supplierName) VALUES(11, 'Sophia Roman Empire');
---INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(11, 'Sophia Roman Empire', 5);
-INSERT INTO Supplier (supplierId, supplierName) VALUES(12, 'LQ Pink');
-INSERT INTO Supplier (supplierId, supplierName) VALUES(13, 'Sasha Mangoes');
---INSERT INTO Supplier (supplierId, supplierName, itemId) VALUES(13, 'Sasha Mangoes', 4);
+--INSERT INTO Supplier (supplierId, supplierName) VALUES(10, 'Farm Yao');
+INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(10, 'Farm Yao', 3);
+--INSERT INTO Supplier (supplierId, supplierName) VALUES(11, 'Sophia Roman Empire');
+INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(11, 'Sophia Roman Empire', 5);
+INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(12, 'LQ Pink', 1);
+INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(12, 'LQ Pink');
+--INSERT INTO Supplier (supplierId, supplierName) VALUES(13, 'Sasha Mangoes');
+INSERT INTO Supplier (supplierId, supplierName, itemID) VALUES(13, 'Sasha Mangoes', 4);
 
 INSERT INTO OrderInformation (orderId, orderDate, expectedArrivalDate, itemId, orderQuantity, orderConfirmation)
     VALUES (5000, 01022023, 01102023, 5, 200, TRUE);

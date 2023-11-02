@@ -28,12 +28,12 @@ public class Supplier {
     @NotEmpty
 //    @JoinColumn(name="itemId")
  //   private WarehouseStock itemId;
-    private List<WarehouseStock> itemId = new ArrayList<>();
+    private List<WarehouseStock> itemID = new ArrayList<>();
 
-    public Supplier(int supplierId, String supplierName, List<WarehouseStock> itemId){
+    public Supplier(int supplierId, String supplierName, List<WarehouseStock> itemID){
         this.supplierId = supplierId;
         this.supplierName = supplierName;
-        this.itemId = itemId;
+        this.itemID = itemID;
 
     }
 
