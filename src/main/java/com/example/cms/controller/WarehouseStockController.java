@@ -1,8 +1,11 @@
 package com.example.cms.controller;
 
-import com.example.cms.controller.exceptions.ProfessorNotFoundException;
+import com.example.cms.controller.exceptions.WarehouseStockNotFoundException;
 import com.example.cms.model.entity.Professor;
+import com.example.cms.model.entity.Shipment;
+import com.example.cms.model.entity.WarehouseStock;
 import com.example.cms.model.repository.ProfessorRepository;
+import com.example.cms.model.repository.WarehouseStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,49 +15,57 @@ import java.util.List;
 @RestController
 public class WarehouseStockController { //
     @Autowired
-    private final ProfessorRepository repository;
+    private final WarehouseStockRepository repository;
 
     // test
-    public WarehouseStockController(ProfessorRepository repository) {
+    public WarehouseStockController(WarehouseStockRepository repository) {
         this.repository = repository;
     }
 
-    @GetMapping("/professors")
-    List<Professor> retrieveAllProfessors() {
+    // get ALL items that are currently in stock
+    @GetMapping("/WarehouseStock")
+    List<WarehouseStock> retrieveAllItemsId() {
         return repository.findAll();
     }
 
-    @PostMapping("/professors")
-    Professor createProfessor(@RequestBody Professor newProfessor) {
-        newProfessor.setSalary(Math.max(newProfessor.getSalary(), 30000));
-        return repository.save(newProfessor);
+    // get every info for items that are currently in stock
+    @GetMapping("/WarehouseStock/{itemId}")
+    WarehouseStock retrieveAllInfo(@PathVariable("itemId") int itemId) {
+        return repository.retrieveAllInfo(itemId);
     }
 
-    @GetMapping("/professors/{id}")
-    Professor retrieveProfessor(@PathVariable("id") Long professorId) {
-        return repository.findById(professorId)
-                .orElseThrow(() -> new ProfessorNotFoundException(professorId));
+    // get item names
+    @GetMapping("/WarehouseStock/name/{itemId}")
+    WarehouseStock retrieveAllItemsName(@PathVariable("itemId") int itemId) {
+        return repository.retrieveAllItemsName(itemId);
     }
 
-    @PutMapping("/professors/{id}")
-    Professor updateProfessor(@RequestBody Professor newProfessor, @PathVariable("id") Long professorId) {
+    // get current quantity of specific itemId
+    @GetMapping("/WarehouseStock/currentQuantity/{itemId}")
+    WarehouseStock retrieveCurrentQuantity(@PathVariable("itemId") int itemId) {
+        return repository.retrieveCurrentQuantity(itemId);
+    }
 
-        return repository.findById(professorId)
-                .map(professor -> {
-                    professor.setFirstName(newProfessor.getFirstName());
-                    professor.setLastName(newProfessor.getLastName());
-                    professor.setSalary(Math.max(newProfessor.getSalary(), 30000));
-                    return repository.save(professor);
+    // get existing lot number of specific itemId
+    @GetMapping("/WarehouseStock/lotNum/{itemId}")
+    WarehouseStock retrieveExistingLotNum(@PathVariable("itemId") int itemId) {
+        return repository.retrieveExistingLotNum(itemId);
+    }
+
+    // get expiring date of specific itemId
+    @GetMapping("/WarehouseStock/expiryDate/{itemId}")
+    WarehouseStock retrieveExpiryDate(@PathVariable("itemId") int itemId) {
+        return repository.retrieveExpiryDate(itemId);
+    }
+
+    // update current quantity according to user input (manager)
+    @PutMapping("/WarehouseStock/{itemId}")
+    WarehouseStock updateCurrentQuantity(@RequestBody WarehouseStock warehouseStock, @PathVariable("itemId") int itemId) {
+        return repository.findById(itemId)
+                .map(stock -> {
+                    stock.setCurrentQuantity(warehouseStock.getCurrentQuantity());
+                    return repository.save(stock);
                 })
-                .orElseGet(() -> {
-                    newProfessor.setId(professorId);
-                    newProfessor.setSalary(Math.max(newProfessor.getSalary(), 30000));
-                    return repository.save(newProfessor);
-                });
-    }
-
-    @DeleteMapping("/professors/{id}")
-    void deleteProfessor(@PathVariable("id") Long professorId) {
-        repository.deleteById(professorId);
+                .orElseThrow(() -> new WarehouseStockNotFoundException(itemId));
     }
 }
