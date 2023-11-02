@@ -48,6 +48,8 @@ INSERT INTO Shipping (shipmentId, shippingQuantity, shipmentStatus) VALUES (8001
 --INSERT INTO Shipping (shipmentId, storeId, itemId, shippingQuantity, shipmentStatus) VALUES (8000, 7000, 4, 20, TRUE);
 --INSERT INTO Shipping (shipmentId, storeId, itemId, shippingQuantity, shipmentStatus) VALUES (8001, 7001, 1, 15, FALSE);
 
+
+
 INSERT INTO departments (code, name, contactEmail) VALUES ('MIE', 'Mechanical and Industrial Engineering', 'reception@mie.utoronto.ca');
 INSERT INTO departments (code, name, contactEmail) VALUES ('ECE', 'Electrical and Computer Engineering', 'eceinquiry@utoronto.ca');
 INSERT INTO departments (code, name, contactEmail) VALUES ('MSE', 'Materials Science and Engineering', 'materials.engineering@utoronto.ca');
