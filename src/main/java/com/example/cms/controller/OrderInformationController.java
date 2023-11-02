@@ -39,7 +39,7 @@ public class OrderInformationController { //
     }
 
     // get supplier id for specific item
-    @GetMapping("/OrderInformation/supplierName/{orderId}")
+    @GetMapping("/OrderInformation/supplierId/{orderId}")
     Integer retrieveSupplierId(@PathVariable("orderId") int orderId) {
         return repository.retrieveSupplierId(orderId);
     }
