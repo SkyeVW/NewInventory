@@ -44,32 +44,31 @@ public class ShipmentController { //
 
     // get new lot number for the new products that are shipping
     @GetMapping("/Shipment/newLotNum/{shipmentId}")
-    Shipment retrieveNewLotNum(@PathVariable("shipmentId") int shipmentId) {
+    Integer retrieveNewLotNum(@PathVariable("shipmentId") int shipmentId) {
         return repository.retrieveNewLotNum(shipmentId); // NOT SURE if can do long.valueOf
     }
 
     // get new itemId (in a list) for new products that are shipping
     @GetMapping("/Shipment/newItemId/{shipmentId}")
-    List<Shipment> retrieveAllNewItemId(@PathVariable("shipmentId") int shipmentId) {
-        repository.findAllNewItemId(shipmentId);
-        return repository.findAll();
+    List<Integer> retrieveAllNewItemId(@PathVariable("shipmentId") int shipmentId) {
+        return repository.findAllNewItemId(shipmentId);
     }
 
     // get new expiry dates for each new products
     @GetMapping("/Shipment/newExpiryDate/{shipmentId}")
-    Shipment retrieveNewExpiryDate(@PathVariable("shipmentId") int shipmentId) {
+    List<Object[]> retrieveNewExpiryDate(@PathVariable("shipmentId") int shipmentId) {
         return repository.retrieveNewExpiryDate(shipmentId); // NOT SURE if can do long.valueOf
     }
 
     // get status of shipment (true = shipped, else false)
     @GetMapping("/Shipment/status/{shipmentId}")
-    Shipment retrieveStatus(@PathVariable("shipmentId") int shipmentId) {
+    Boolean retrieveStatus(@PathVariable("shipmentId") int shipmentId) {
         return repository.retrieveStatus(shipmentId); // NOT SURE if can do long.valueOf
     }
 
     // get the reason why shipment is cancelled
     @GetMapping("/Shipment/reasonCancellation/{shipmentId}")
-    Shipment retrieveReason(@PathVariable("shipmentId") int shipmentId) {
+    String retrieveReason(@PathVariable("shipmentId") int shipmentId) {
         return repository.retrieveReason(shipmentId); // NOT SURE if can do long.valueOf
         //Shipment shipment = repository.findById(shipmentId)
         //return shipment.getReason();

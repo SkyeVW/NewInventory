@@ -29,25 +29,25 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
     // get new lot number for the new products that are shipping
     @Query(value = "select newLotNumber from Shipment s where " +
             "shipmentId = :shipmentId", nativeQuery = true)
-    Shipment retrieveNewLotNum(@Param("shipmentId") int shipmentId);
+    Integer retrieveNewLotNum(@Param("shipmentId") int shipmentId);
 
     // get ALL new itemId for the new products that are shipping
     @Query(value = "select newItemId from Shipment s where " +
             "shipmentId = :shipmentId", nativeQuery = true)
-    List<Shipment> findAllNewItemId(@Param("shipmentId") int shipmentId);
+    List<Integer> findAllNewItemId(@Param("shipmentId") int shipmentId);
 
     // get new expiry date for new products
     @Query(value = "select newExpiryMonth, newExpiryDay, newExpiryYear from Shipment s where " +
             "shipmentId = :shipmentId", nativeQuery = true)
-    Shipment retrieveNewExpiryDate(@Param("shipmentId") int shipmentId);
+    List<Object[]> retrieveNewExpiryDate(@Param("shipmentId") int shipmentId);
 
     // get status of new products that are shipping
     @Query(value = "select shipmentStatus from Shipment s where " +
             "shipmentId = :shipmentId", nativeQuery = true)
-    Shipment retrieveStatus(@Param("shipmentId") int shipmentId);
+    Boolean retrieveStatus(@Param("shipmentId") int shipmentId);
 
     // get reason for cancellation
     @Query(value = "select cancellationReason from Shipment s where " +
             "shipmentId = :shipmentId", nativeQuery = true)
-    Shipment retrieveReason(@Param("shipmentId") int shipmentId);
+    String retrieveReason(@Param("shipmentId") int shipmentId);
 }
