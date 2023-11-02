@@ -22,8 +22,8 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
     List<Object[]> retrieveDateShipment(@Param("shipmentId") int shipmentId);
 
     //get shipment size
-    @Query(value = "select shipmentSize from Shipment s where " +
-            "shipmentId = :shipmentId", nativeQuery = true)
+    @Query(value = "select s.shipmentSize from Shipment s where " +
+            "s.shipmentId = :shipmentId", nativeQuery = true)
     Integer retrieveSize(@Param("shipmentId") int shipmentId);
 
     // get new lot number for the new products that are shipping
@@ -32,8 +32,8 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
     Integer retrieveNewLotNum(@Param("shipmentId") int shipmentId);
 
     // get ALL new itemId for the new products that are shipping
-    @Query(value = "select newItemId from Shipment s where " +
-            "shipmentId = :shipmentId", nativeQuery = true)
+    @Query(value = "select s.newItemId from Shipment s where " +
+            "s.shipmentId = :shipmentId", nativeQuery = true)
     List<Integer> findAllNewItemId(@Param("shipmentId") int shipmentId);
 
     // get new expiry date for new products
