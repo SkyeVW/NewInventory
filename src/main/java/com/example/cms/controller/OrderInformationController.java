@@ -87,7 +87,7 @@ public class OrderInformationController { //
 //        return repository.save(newOrder);
 //    }
     @PostMapping("/OrderInformation") //save new students to repository (connect to front-end)
-    OrderInformation createStudent(@RequestBody OrderInformation newOrder) {
+    OrderInformation createOrderQuantity(@RequestBody OrderInformation newOrder) {
         return repository.save(newOrder);
     }
     // create
