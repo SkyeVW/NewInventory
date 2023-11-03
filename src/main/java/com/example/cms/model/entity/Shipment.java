@@ -21,34 +21,34 @@ public class Shipment {
     @NotNull
     private int shipmentId;
 
-    @NotEmpty
+//    @NotEmpty
     private int shipmentMonth;
 
-    @NotEmpty
+//    @NotEmpty
     private int shipmentDay;
 
-    @NotEmpty
+//    @NotEmpty
     private int shipmentYear;
 
-    @NotEmpty
+//    @NotEmpty
     private int shipmentSize;
 
-    @NotEmpty
+//    @NotEmpty
     private int newLotNumber; // just for displaying
 
-    @NotEmpty
+//    @NotEmpty
     private int newItemId;  // just for displaying
 
-    @NotEmpty
+//    @NotEmpty
     private int newExpiryMonth;  // just for displaying
 
-    @NotEmpty
+//    @NotEmpty
     private int newExpiryDay;  // just for displaying
 
-    @NotEmpty
+//    @NotEmpty
     private int newExpiryYear;  // just for displaying
 
-    @NotEmpty
+//    @NotEmpty
     private boolean shipmentStatus;
 
     @Nullable

@@ -24,22 +24,22 @@ public class WarehouseStock {
 //    @JoinColumn(name="itemId")
     private int itemId;
 
-    @NotEmpty
+//    @NotEmpty
     private int currentQuantity;
 
-    @NotEmpty
+//    @NotEmpty
     private String itemName;
 
-    @NotEmpty
+//    @NotEmpty
     private int lotNumber;
 
-    @NotEmpty
+//    @NotEmpty
     private int expiryMonth;
 
-    @NotEmpty
+//    @NotEmpty
     private int expiryDay;
 
-    @NotEmpty
+//    @NotEmpty
     private int expiryYear;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
