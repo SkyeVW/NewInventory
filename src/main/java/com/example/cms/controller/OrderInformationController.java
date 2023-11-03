@@ -2,6 +2,7 @@ package com.example.cms.controller;
 
 import com.example.cms.controller.exceptions.OrderInformationNotFoundException;
 import com.example.cms.model.entity.OrderInformation;
+import com.example.cms.model.entity.Student;
 import com.example.cms.model.entity.WarehouseStock;
 import com.example.cms.model.repository.OrderInformationRepository;
 import org.hibernate.criterion.Order;
@@ -69,22 +70,25 @@ public class OrderInformationController { //
     }
 
     // create new order
-    @PostMapping("/OrderInformation")
-    OrderInformation createOrderQuantity(@RequestBody OrderInformation orderInformation) {
-        OrderInformation newOrder = new OrderInformation();
-
-        newOrder.setOrderId(orderInformation.getOrderId());
-        newOrder.setSupplierNAME(orderInformation.getSupplierNAME());
-        newOrder.setSupplierID(orderInformation.getSupplierID());
-        newOrder.setOrderDate(orderInformation.getOrderDate());
-        newOrder.setExpectedArrivalDate(orderInformation.getExpectedArrivalDate());
-        newOrder.setItemID(orderInformation.getItemID());
-        newOrder.setOrderQuantity(orderInformation.getOrderQuantity());
-        newOrder.setOrderConfirmation(orderInformation.getOrderConfirmation());
-
-
+//    @PostMapping("/OrderInformation")
+//    OrderInformation createOrderQuantity(@RequestBody OrderInformation orderInformation) {
+//        OrderInformation newOrder = new OrderInformation();
+//
+//        newOrder.setOrderId(orderInformation.getOrderId());
+////        newOrder.setSupplierNAME(orderInformation.getSupplierNAME());
+////        newOrder.setSupplierID(orderInformation.getSupplierID());
+//        newOrder.setOrderDate(orderInformation.getOrderDate());
+//        newOrder.setExpectedArrivalDate(orderInformation.getExpectedArrivalDate());
+////        newOrder.setItemID(orderInformation.getItemID());
+//        newOrder.setOrderQuantity(orderInformation.getOrderQuantity());
+//        newOrder.setOrderConfirmation(orderInformation.getOrderConfirmation());
+//
+//
+//        return repository.save(newOrder);
+//    }
+    @PostMapping("/OrderInformation") //save new students to repository (connect to front-end)
+    OrderInformation createStudent(@RequestBody OrderInformation newOrder) {
         return repository.save(newOrder);
     }
-
     // create
 }
