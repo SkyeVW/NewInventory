@@ -74,12 +74,14 @@ public class OrderInformationController { //
         OrderInformation newOrder = new OrderInformation();
 
         newOrder.setOrderId(orderInformation.getOrderId());
-        newOrder.setSupplierName(orderInformation.getSupplierName());
-        newOrder.setSupplierId(orderInformation.getSupplierId());
+        newOrder.setSupplierNAME(orderInformation.getSupplierNAME());
+        newOrder.setSupplierID(orderInformation.getSupplierID());
         newOrder.setOrderDate(orderInformation.getOrderDate());
         newOrder.setExpectedArrivalDate(orderInformation.getExpectedArrivalDate());
-        newOrder.setItemId(orderInformation.getItemId());
+        newOrder.setItemID(orderInformation.getItemID());
         newOrder.setOrderQuantity(orderInformation.getOrderQuantity());
+        newOrder.setOrderConfirmation(orderInformation.getOrderConfirmation());
+
 
         return repository.save(newOrder);
     }
