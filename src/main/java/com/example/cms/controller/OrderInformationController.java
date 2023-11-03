@@ -87,7 +87,15 @@ public class OrderInformationController { //
 //        return repository.save(newOrder);
 //    }
     @PostMapping("/OrderInformation") //save new students to repository (connect to front-end)
-    OrderInformation createOrderQuantity(@RequestBody OrderInformation newOrder) {
+    OrderInformation createOrderQuantity(@RequestBody OrderInformation orderInfo) {
+        OrderInformation newOrder = new OrderInformation();
+
+        newOrder.setOrderId(orderInfo.getOrderId());
+
+        newOrder.setOrderDate(orderInfo.getOrderDate());
+        newOrder.setExpectedArrivalDate(orderInfo.getExpectedArrivalDate());
+        newOrder.setOrderQuantity(orderInfo.getOrderQuantity());
+        newOrder.setOrderConfirmation(orderInfo.getOrderConfirmation());
         return repository.save(newOrder);
     }
     // create
