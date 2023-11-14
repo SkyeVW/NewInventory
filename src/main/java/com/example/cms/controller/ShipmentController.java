@@ -1,13 +1,14 @@
 package com.example.cms.controller;
 
-import com.example.cms.controller.dto.ShipmentDto;
+import com.example.cms.controller.exceptions.ProfessorNotFoundException;
+import com.example.cms.model.entity.Professor;
 import com.example.cms.model.entity.Shipment;
+import com.example.cms.model.repository.ProfessorRepository;
 import com.example.cms.model.repository.ShipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -15,91 +16,47 @@ public class ShipmentController { //
     @Autowired
     private final ShipmentRepository repository;
 
+    // test
     public ShipmentController(ShipmentRepository repository) {
         this.repository = repository;
     }
 
-    // get shipmentId
-    @GetMapping("/Shipment/")
+    @GetMapping("/Shipment/{shipmentId}")
     List<Shipment> retrieveAllShipment() {
         return repository.findAll();
     }
 
-    @GetMapping("/Shipment/{shipmentId}")
-    Optional<Shipment> retrieveShipmentById(@PathVariable("shipmentId") int shipmentId) {
-        return repository.findById(shipmentId);
+    @PostMapping("/professors")
+    Professor createProfessor(@RequestBody Professor newProfessor) {
+        newProfessor.setSalary(Math.max(newProfessor.getSalary(), 30000));
+        return repository.save(newProfessor);
     }
 
-    // get date this shipment is being shipped
-    @GetMapping("/Shipment/dateShipment/{shipmentId}")
-    List<Object[]> retrieveDateShipment(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveDateShipment(shipmentId); // NOT SURE if can do long.valueOf
+    @GetMapping("/professors/{id}")
+    Professor retrieveProfessor(@PathVariable("id") Long professorId) {
+        return repository.findById(professorId)
+                .orElseThrow(() -> new ProfessorNotFoundException(professorId));
     }
 
-    // get size of shipment
-    @GetMapping("/Shipment/size/{shipmentId}")
-    Integer retrieveSize(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveSize(shipmentId); // NOT SURE if can do long.valueOf
-    }
+    @PutMapping("/professors/{id}")
+    Professor updateProfessor(@RequestBody Professor newProfessor, @PathVariable("id") Long professorId) {
 
-    // get new lot number for the new products that are shipping
-    @GetMapping("/Shipment/newLotNum/{shipmentId}")
-    Integer retrieveNewLotNum(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveNewLotNum(shipmentId); // NOT SURE if can do long.valueOf
-    }
-
-    // get new itemId (in a list) for new products that are shipping
-    @GetMapping("/Shipment/newItemId/{shipmentId}")
-    List<Integer> retrieveAllNewItemId(@PathVariable("shipmentId") int shipmentId) {
-        return repository.findAllNewItemId(shipmentId);
-    }
-
-    // get new expiry dates for each new products
-    @GetMapping("/Shipment/newExpiryDate/{shipmentId}")
-    List<Object[]> retrieveNewExpiryDate(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveNewExpiryDate(shipmentId); // NOT SURE if can do long.valueOf
-    }
-
-    // get status of shipment (true = shipped, else false)
-    @GetMapping("/Shipment/status/{shipmentId}")
-    Boolean retrieveStatus(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveStatus(shipmentId); // NOT SURE if can do long.valueOf
-    }
-
-    // get the reason why shipment is cancelled
-    @GetMapping("/Shipment/reasonCancellation/{shipmentId}")
-    String retrieveReason(@PathVariable("shipmentId") int shipmentId) {
-        return repository.retrieveReason(shipmentId); // NOT SURE if can do long.valueOf
-        //Shipment shipment = repository.findById(shipmentId)
-        //return shipment.getReason();
-    }
-
-    // update shipmentStatus according to user input
-    @PutMapping("/Shipment/status/{shipmentId}/{updatedStatus}")
-    Shipment updateStatus(@RequestBody ShipmentDto shipmentDto, @PathVariable("shipmentId") int shipmentId, @PathVariable("updatedStatus") boolean updatedStatus) {
-
-//        boolean shipmentStatus = shipmentDto;
-//        Shipment shipment = new Shipment();
-//        shipment.setShipmentId(shipmentDto.getShipmentId());
-//        shipment.setUpdatedStatus(shipmentDto.getUpdatedStatus());
-
-        return repository.findById(shipmentId)
-                .map(shipment -> {
-                    shipment.setShipmentStatus(updatedStatus);
-                    return repository.save(shipment);
+        return repository.findById(professorId)
+                .map(professor -> {
+                    professor.setFirstName(newProfessor.getFirstName());
+                    professor.setLastName(newProfessor.getLastName());
+                    professor.setSalary(Math.max(newProfessor.getSalary(), 30000));
+                    return repository.save(professor);
                 })
-                .orElseGet(() ->{
-                    Shipment newShipment = new Shipment();
-                    newShipment.setShipmentId(shipmentDto.getShipmentId());
-                    newShipment.setShipmentStatus(shipmentDto.getShipmentStatus());
-                    return repository.save(newShipment);
+                .orElseGet(() -> {
+                    newProfessor.setId(professorId);
+                    newProfessor.setSalary(Math.max(newProfessor.getSalary(), 30000));
+                    return repository.save(newProfessor);
                 });
     }
 
-    // delete the order that we decide to cancel
-    @DeleteMapping("/Shipment/{shipmentId}")
-    void deleteShipment(@PathVariable("shipmentId") int shipmentId) {
-        repository.deleteById(shipmentId);
+    @DeleteMapping("/professors/{id}")
+    void deleteProfessor(@PathVariable("id") Long professorId) {
+        repository.deleteById(professorId);
     }
 }
-
